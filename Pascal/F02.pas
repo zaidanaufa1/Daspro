@@ -17,7 +17,7 @@ implementation
         begin
             writeln('Pokebon di pokedex:');
             i:=1;
-            for i :=1 to jmlPokebon  do
+            for i :=1 to jmlPokebon-1  do
             begin
                 writeln(TPok[i].ID_Pokebon,'|',TPok[i].Nama,'|',TPok[i].Tipe,'|',TPok[i].Evolusi_Selanjutnya);   
             end;   

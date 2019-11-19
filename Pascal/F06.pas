@@ -7,7 +7,7 @@ interface
 
 implementation
     procedure tangkap();
-    var
+    //var
         //i : integer;
     begin
         writeln('Kamu mendapatkan: pikaboo');

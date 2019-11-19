@@ -26,12 +26,12 @@ interface
     var
         File_Pokebon : TextFile;
         Pokebon:pokemon;
-        TPok:array [1..1000] of pokemon;
+        TPok:array [0..1000] of pokemon;
         jmlPokebon : integer;
 
         File_Inven : TextFile;
         Inven : inventori;
-        TInv : array [1..100] of inventori;
+        TInv : array [0..1000] of inventori;
         jmlInv : integer;
 
         {File_Evolusi : file of evolution;
@@ -58,8 +58,8 @@ implementation
         
     begin
 
-        Assign (File_Pokebon,CSV);
-        Reset(File_Pokebon);
+        assign (File_Pokebon,CSV);
+        reset(File_Pokebon);
         //read(File_Pokebon,CC);
         if (eof(File_Pokebon))then
         begin
@@ -69,7 +69,8 @@ implementation
             jmlPokebon := 0;
             baris := 0;//baris 0 untuk header
             
-            repeat
+            while (not(eof(File_Pokebon)))do
+            begin
                 readln(File_Pokebon,CC);
                 kolom := 0;
                 i:=1;
@@ -102,8 +103,12 @@ implementation
                 end;
 
                 baris := baris+1; //baris ditambah 1
-                jmlPokebon := jmlPokebon+1;           
-            until (eof(File_Pokebon));
+                if(baris>=1)then
+                begin
+                    jmlPokebon := jmlPokebon+1;    
+                end;
+                          
+            end;
         end;
         close(File_Pokebon);
     end;
@@ -113,7 +118,6 @@ implementation
 		baris : integer;
 		CC : string;
 		kolom : integer;
-		jmlInv : integer;
         i:integer;
         tempText : string;
 	begin
@@ -127,7 +131,8 @@ implementation
 			jmlInv := 0;
 			baris := 0;
 			
-			repeat
+			while (not(eof(File_Inven)))do
+            begin
                 tempText:='';
 				readln(File_Inven,CC);
                 kolom := 0;
@@ -161,9 +166,13 @@ implementation
                 end;
 
                 baris := baris+1; //baris ditambah 1
-                jmlInv := jmlInv+1;
+                if(baris>=1)then
+                begin
+                    jmlInv := jmlInv+1;    
+                end;
+                
      
-			until (eof(File_Inven));
+			end;
 		end;
         close(File_Inven);
 	end;

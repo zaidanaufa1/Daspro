@@ -9,8 +9,8 @@ type
 
 var
     File_Pokebon : text;
-    TPok:array [1..1000] of pokemon;
-    //jmlPokebon : integer;
+    TPok:array [0..1000] of pokemon;
+    jmlPokebon : integer;
     baris:integer;
     CC :String;
     kolom : integer;
@@ -19,13 +19,14 @@ var
 begin
     assign (File_Pokebon,'pokemon.csv');
     reset(File_Pokebon);
-    //jmlPokebon := 0;
-    baris := 0;//baris 0 untuk header          
-    repeat
-        kolom := 0;
-        i:=1;
+    jmlPokebon := 0;
+    baris := 0;//baris 1 untuk header          
+    while (not eof(File_Pokebon)) do
+    begin
         tempText := '';
-        readln(File_Pokebon,CC);
+        i:=1;
+        kolom := 0;
+        readln(File_Pokebon,CC);//CC string cuk
         while(i<=length(CC)+1 )do //masukin pokebon sesuai kolom
         begin
             if((CC[i] = ',') or (i=length(CC)+1))then
@@ -43,8 +44,9 @@ begin
                 begin
                     TPok[baris].Evolusi_Selanjutnya := tempText;
                 end;
-                tempText := '';
                 kolom := kolom+1;
+                tempText := '';
+                
             end else
             begin
                 tempText := tempText + CC[i];
@@ -53,13 +55,13 @@ begin
         end;
 
         baris := baris+1; //baris ditambah 1
-        {if(baris>=1)then
+        if(baris>=1)then
         begin
             jmlPokebon := jmlPokebon+1;
-        end; }           
-    until (eof(File_Pokebon));
+        end;            
+    end ;
     
-    for j:=0 to baris do
+    for j:=1 to jmlPokebon do
     begin
         writeln(TPok[j].ID_Pokebon,'|',TPok[j].Nama,'|',TPok[j].Tipe,'|',TPok[j].Evolusi_Selanjutnya);    
     end;
