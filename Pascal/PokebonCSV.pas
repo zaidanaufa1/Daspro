@@ -21,6 +21,18 @@ interface
         Alur_Evolusi : array [1..1000] of string;
     end;
 
+    type train = record
+        Nama : string;
+        Day_Passed : integer;
+        File_Inventori : string;
+        File_Stats : string;
+    end;
+
+    type status = record
+        Nama_Pokebon : string;
+        Max_Level : string;
+    end;
+
     const
         mark  =',';
     var
@@ -40,9 +52,21 @@ interface
         jmlEvo:integer;
         last_Ev : array [0..1000] of integer;
 
+        File_Trainer : TextFile;
+        Trainer : train;
+        TTrain : array [0..1000] of train;
+        jmlTrain : integer;
+
+        File_Stats : TextFile;
+        stats : status;
+        TStats : array [0..1000] of status;
+        jmlStats : integer;
+
     procedure PokebonCSVtoArray(CSV : string);
     procedure InvenCSVtoArray(CSV : string);
     procedure EvolutionCSVtoArray(CSV : string);
+    procedure TrainerCSVtoArray(CSV : string);
+    procedure StatsCSVtoArray(CSV : string);
 implementation
     
 
@@ -231,3 +255,125 @@ implementation
 		end;
     end;
 end.
+
+procedure TrainerCSVtoArray(CSV : string);
+	var 
+		baris : integer;
+		CC : string;
+		kolom : integer;
+        i:integer;
+        tempText : string;
+	begin
+		assign(File_Trainer,CSV);
+		reset(File_Trainer);
+		if(eof(File_Trainer))then
+		begin
+			writeln('File kosong');
+		end else 
+        begin
+			jmlTrain := 0;
+			baris := 0;
+			
+			while (not(eof(File_Trainer)))do
+            begin
+                tempText:='';
+				readln(File_Trainer,CC);
+                kolom := 0;
+                i:=1;
+                {while (kolom<4) do
+                begin}
+                while(i<=length(CC)+1)do //masukin pokebon sesuai kolom
+                begin
+                    if((CC[i] = ',') or (i=length(CC)+1))then
+                    begin
+                        if(kolom=0) then
+                        begin
+                            TTrain[baris].Nama := tempText;
+                        end else if (kolom =1)then
+                        begin
+                            TTrain[baris].Day_Passed := tempText;
+                        end else if (kolom =2)then
+                        begin
+                            TTrain[baris].File_Inventori := tempText;
+                        end else
+                        begin
+                            TTrain[baris].File_Stats := tempText;
+                        end;
+                        kolom := kolom+1;
+                        tempText := '';                       
+                    end else
+                    begin
+                        tempText := tempText + CC[i];
+                    end;                       
+                    i := i+1;                    
+                end;
+
+                baris := baris+1; //baris ditambah 1
+                if(baris>=1)then
+                begin
+                    jmlTrain := jmlTrain+1;    
+                end;
+                
+     
+			end;
+		end;
+        close(File_Trainer);
+	end;
+
+    procedure StatsCSVtoArray(CSV : string);
+	var 
+		baris : integer;
+		CC : string;
+		kolom : integer;
+        i:integer;
+        tempText : string;
+	begin
+		assign(File_Stats,CSV);
+		reset(File_Stats);
+		if(eof(File_Stats))then
+		begin
+			writeln('File kosong');
+		end else 
+        begin
+			jmlStats := 0;
+			baris := 0;
+			
+			while (not(eof(File_Stats)))do
+            begin
+                tempText:='';
+				readln(File_Stats,CC);
+                kolom := 0;
+                i:=1;
+                {while (kolom<4) do
+                begin}
+                while(i<=length(CC)+1)do //masukin pokebon sesuai kolom
+                begin
+                    if((CC[i] = ',') or (i=length(CC)+1))then
+                    begin
+                        if(kolom=0) then
+                        begin
+                            TStats[baris].Nama_Pokebon := tempText;
+                        end else
+                        begin
+                            TStats[baris].Max_Level := tempText;
+                        end;
+                        kolom := kolom+1;
+                        tempText := '';                       
+                    end else
+                    begin
+                        tempText := tempText + CC[i];
+                    end;                       
+                    i := i+1;                    
+                end;
+
+                baris := baris+1; //baris ditambah 1
+                if(baris>=1)then
+                begin
+                    jmlStats := jmlStats+1;    
+                end;
+                
+     
+			end;
+		end;
+        close(File_Stats);
+	end;

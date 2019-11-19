@@ -1,18 +1,22 @@
 Program main;
 
-uses PokebonCSV,F02,F03,F04,F06,F07,F09,F11,F13;
+uses PokebonCSV,F02,F03,F04,F06,F07,F09,F11,F13,F14;
 
 var
-    pok,inv,evo:string;
+    pok,inv,evo,trn,sts:string;
     choice : integer;
 begin
     write('Masukkan file pokebon: ');readln(pok);
     write('Masukkan file inventori: ');readln(inv);
     write('Masukkan file evolusi: ');readln(evo);
+    Write('Masukan file trainer: ');readln(trn);
+    write('Masukan file Stats: ');readln(sts);
     //loading file
     PokebonCSVtoArray(pok);
     InvenCSVtoArray(inv);
     EvolutionCSVtoArray(evo);
+    TrainerCSVtoArray(trn);
+    StatsCSVtoArray(sts);
     repeat
         writeln('Menu');
         writeln('2.Pokebon Database');
@@ -23,6 +27,7 @@ begin
         writeln('9.Membuat Pokebon');
         writeln('11.Lihat chart evolusi');
         writeln('13.Evolusi Pokebon');
+        writeln('14.Tidur');
         writeln('Masukkan hal yang ingin dilakukan: ');readln(choice);
         if (choice = 2) then
         begin
@@ -48,6 +53,9 @@ begin
         end else if(choice=13)then
         begin
             EvoPok();
+        end else if(choice=14)then
+        begin
+            tidur();
         end else  if(choice=0)then
         begin
             writeln('babay');
