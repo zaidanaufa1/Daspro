@@ -1,0 +1,17 @@
+ID_Pokebon,Nama,Tipe,Evolusi_Selanjutnya
+1,Charmanber,Api, Charmeleber 
+2, Charmeleber ,Api,Charizard
+3,Pikaboo,Listrik,-
+4,Bulbadaun,Tanah,Ivydaun
+5,Ivydaun,Tanah,Venudaun
+6,Venudaun,Tanah,-
+7,Charizard,Api,-
+8,Squirtle,Air,Wartotle
+9,Wartotle,Air,Blastoise
+10,Blastoise,Air,-
+11,Caterpie,Tanah,Metapod
+12,Metapod,Tanah,Butterfree
+13,Butterfree,Tanah,-
+14,Weedle,Tanah,Kakuna
+15,Kakuna,Tanah,Beedrill
+16,Beedrill,Tanah,-
