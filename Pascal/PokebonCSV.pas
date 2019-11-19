@@ -23,7 +23,7 @@ interface
 
     type train = record
         Nama : string;
-        Day_Passed : integer;
+        Day_Passed : string;
         File_Inventori : string;
         File_Stats : string;
     end;
@@ -67,6 +67,7 @@ interface
     procedure EvolutionCSVtoArray(CSV : string);
     procedure TrainerCSVtoArray(CSV : string);
     procedure StatsCSVtoArray(CSV : string);
+    
 implementation
     
 
@@ -254,7 +255,7 @@ implementation
 
 		end;
     end;
-end.
+
 
 procedure TrainerCSVtoArray(CSV : string);
 	var 
@@ -263,6 +264,7 @@ procedure TrainerCSVtoArray(CSV : string);
 		kolom : integer;
         i:integer;
         tempText : string;
+        tempday : integer;
 	begin
 		assign(File_Trainer,CSV);
 		reset(File_Trainer);
@@ -377,3 +379,4 @@ procedure TrainerCSVtoArray(CSV : string);
 		end;
         close(File_Stats);
 	end;
+end.

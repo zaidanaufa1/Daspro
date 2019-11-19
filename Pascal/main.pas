@@ -18,6 +18,7 @@ begin
     TrainerCSVtoArray(trn);
     StatsCSVtoArray(sts);
     repeat
+        writeln('');
         writeln('Menu');
         writeln('2.Pokebon Database');
         writeln('3.Mengecek Inventori');
