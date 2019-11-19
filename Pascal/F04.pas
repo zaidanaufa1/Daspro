@@ -1,7 +1,7 @@
 unit F04;
 
 interface
-    uses PokebonCSV,F02,sysutils;
+    uses PokebonCSV,F03,sysutils;
 procedure pelepasan();
 
 implementation
@@ -16,14 +16,15 @@ implementation
             writeln('Tidak ada pokebon pada nomor inventori: ',nomor);
         end else
         begin
-            for i:=nomor+1 to jmlPokebon do
+            writeln('Pelepasan berhasil');
+            for i:=nomor+1 to jmlInv-1 do
             begin
-                Tpok[i-1].ID_Pokebon := IntToStr(StrToInt(Tpok[i-1].ID_Pokebon)-1);
-                Tpok[i-1] := Tpok[i];
+                TInv[i-1].Nomor_Inventori := IntToStr(StrToInt(TInv[i-1].Nomor_Inventori)-1);
+                TInv[i-1] := TInv[i];
                 
             end; 
             jmlPokebon := jmlPokebon-1;
-            printPokeDex();   
+            listInven();   
         end;
     end;
 end.

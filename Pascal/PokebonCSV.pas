@@ -16,10 +16,10 @@ interface
         Kondisi : string;
     end;
 
-    {type evolution = record
-        ID_Evolusi : integer;
-        Alur_Evolusi : array [1..100] of string;}
-
+    type evolution = record
+        ID_Evolusi : string;
+        Alur_Evolusi : array [1..1000] of string;
+    end;
 
     const
         mark  =',';
@@ -34,16 +34,15 @@ interface
         TInv : array [0..1000] of inventori;
         jmlInv : integer;
 
-        {File_Evolusi : file of evolution;
+        File_Evolusi : TextFile;
         Evo : evolution;
-        TEvo : array [1..100] of evolution;
-        jmlEvo:integer;}
-        
+        TEvo : array [0..1000] of evolution;
+        jmlEvo:integer;
+        last_Ev : array [0..1000] of integer;
+
     procedure PokebonCSVtoArray(CSV : string);
     procedure InvenCSVtoArray(CSV : string);
-    
-
-    //procedure EvolutionCSVtoArray();
+    procedure EvolutionCSVtoArray(CSV : string);
 implementation
     
 
@@ -177,57 +176,58 @@ implementation
         close(File_Inven);
 	end;
 
-end.
-    {procedure EvolutionCSVtoArray();
-    begin
-        var 
+
+    procedure EvolutionCSVtoArray(CSV:string);
+    var 
 		baris : integer;
-		CC : string;
+		CC,tempText : string;
 		kolom : integer;
-		jmlInv : integer;
         i:integer;
-        last_Ev : array [1..100] of integer;
         k:integer;
 	begin
-		assign(File_Evolusi,'file');
+		assign(File_Evolusi,CSV);
 		reset(File_Evolusi);
-		if(eof(File_Inven))then
+		if(eof(File_Evolusi))then
 		begin
 			writeln('File kosong');
-		end else begin
-			jmlEvo := 0;
-			baris := 0;
-			kolom := 0;
-            i:=0;
-            k:=0;
-			repeat
-				readln(File_Evolusi,CC);
-                while (i<=length(CC)+1) do
+		end else 
+        begin
+            jmlEvo:=0;
+            baris:=0;
+            while(not(eof(File_Evolusi)))do
+            begin
+                readln(File_Evolusi,CC);
+                kolom:=0;
+                i:=1;
+                tempText:='';
+                while(i<=length(CC)+1)do
                 begin
-                    while(CC <> mark or  CC <> '-')do //masukin evo 
+                    if ( (CC[i] = ',') or (i=length(CC)+1) or (CC[i]='-') )then
                     begin
-                        if(kolom=0) then
+                        if(kolom=0)then
                         begin
-                            TEvo[baris].ID_Evolusi := baris;
-
-                        end else //kolom evolusi mulai dari 1
+                            TEvo[baris].ID_Evolusi := tempText;
+                        end else
                         begin
-                            TEvo[baris].Alur_Evolusi[kolom] := TEvo[baris].Alur_Evolusi[kolom] + CC[i];
+                            TEvo[baris].Alur_Evolusi[kolom]:=tempText;
                         end;
+                        tempText:='';
+                        kolom:=kolom+1;
+                    end else
+                    begin
+                        tempText := tempText+CC[i];
                     end;
-                    
-                    kolom := kolom+1;
-                    i := i+1;
-                    
-                end; 
-                last_Ev[k] := kolom;
-                baris := baris+1; //baris ditambah 1
-                kolom := 0; //reset kolom 
-                if(baris>1)then
+                    i:=i+1;
+                end;
+                last_Ev[baris]:=kolom-1;//buat liat evolusi terakhir baris ke-n
+                baris:=baris+1;
+                if(baris>=1)then
                 begin
-                    jmlEvo := jmlEvo + 1;
-                end;        
-			until (eof(File_Evolusi));
+                    jmlEvo:=jmlEvo+1;
+                end;
+
+            end;
+
 		end;
-        close(File_Inven);   
-    end;}
+    end;
+end.
