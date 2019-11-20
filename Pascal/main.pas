@@ -1,6 +1,6 @@
 Program main;
 
-uses PokebonCSV,F02,F03,F04,F06,F07,F09,F13;
+uses PokebonCSV,F02,F03,F04,F06,F07,F09,F13,F15;
 
 var
     pok,inv:string;
@@ -20,6 +20,7 @@ begin
         writeln('7.Bertarung');
         writeln('9.Membuat Pokebon');
         writeln('13.Evolusi Pokebon');
+        writeln('15.Save File');
         writeln('Masukkan hal yang ingin dilakukan: ');readln(choice);
         if (choice = 2) then
         begin
@@ -42,6 +43,9 @@ begin
         end else if(choice=13)then
         begin
             EvoPok();
+        end else if(choice=15)then
+        begin
+            save();
         end else  if(choice=0)then
         begin
             writeln('babay');
