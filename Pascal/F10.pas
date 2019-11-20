@@ -2,9 +2,9 @@ unit F10;
 
 interface
     uses 
-        PokebonCSV;
-
-    
+        PokebonCSV,sysutils;
+    procedure AddEvolution();
+implementation   
     procedure AddEvolution();
     var
         bfr : string;//sblm evo
@@ -20,9 +20,9 @@ interface
         cari2 :=False;
         write('Masukkan nama pokebon sebelum evolusi: ');readln(bfr);
         write('Masukkan nama pokebon sesudah evolusi: ');readln(aftr);
-        while ((!cari1 or !cari2) or i<=jmlEvo) do
+        while (i<=jmlEvo-1) do
         begin
-            while (j<=last_Evo[i] )do
+            while (j<=last_Ev[i] )do
             begin
                 if(TEvo[i].Alur_Evolusi[j] = bfr)then
                 begin
@@ -37,14 +37,34 @@ interface
                 end;
                 j := j+1; 
             end;
+            i := i+1;
         end;
-        if(baris1 = baris 2)then
+
+        if(not cari1 and not cari2)then
         begin
-            if ((TEvo[baris1].Alur_Evolusi[kolom1+1]=nil) and (TEvo[baris2].Alur_Evolusi[kolom2-1]=nil)) then
+            TEvo[jmlEvo+1].Alur_Evolusi[1] := bfr;
+            TEvo[jmlEvo+1].Alur_Evolusi[2] := aftr;
+            last_Ev[jmlEvo+1] := 2;
+            TEvo[jmlEvo+1].ID_Evolusi := IntToStr(jmlEvo+1);
+            jmlEvo:=jmlEvo+1;
+        end else
+        begin
+            if( not cari2 ) then
             begin
-                TEvo[baris1].Alur_Evolusi[ko]
-            end;    
+                if ( (kolom1=1) or (kolom1=last_Ev[baris1]) ) then
+                begin
+                    TEvo[baris1].Alur_Evolusi[kolom1+1]:=aftr;
+                    last_Ev[baris1]:=last_Ev[baris1]+1;    
+                end else
+                begin
+                    writeln('Alur evolusi tidak memenuhi syarat');
+                end;
+                
+            end else
+            begin
+                writeln('Alur evolusi tidak memenuhi syarat');
+            end;
         end;
-        
     end;
+        
 end.

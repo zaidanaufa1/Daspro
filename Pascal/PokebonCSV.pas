@@ -16,10 +16,22 @@ interface
         Kondisi : string;
     end;
 
-    {type evolution = record
-        ID_Evolusi : integer;
-        Alur_Evolusi : array [1..100] of string;}
+    type evolution = record
+        ID_Evolusi : string;
+        Alur_Evolusi : array [1..1000] of string;
+    end;
 
+    type train = record
+        Nama : string;
+        Day_Passed : string;
+        File_Inventori : string;
+        File_Stats : string;
+    end;
+
+    type status = record
+        Nama_Pokebon : string;
+        Max_Level : string;
+    end;
 
     const
         mark  =',';
@@ -34,16 +46,28 @@ interface
         TInv : array [0..1000] of inventori;
         jmlInv : integer;
 
-        {File_Evolusi : file of evolution;
+        File_Evolusi : TextFile;
         Evo : evolution;
-        TEvo : array [1..100] of evolution;
-        jmlEvo:integer;}
-        
+        TEvo : array [0..1000] of evolution;
+        jmlEvo:integer;
+        last_Ev : array [0..1000] of integer;
+
+        File_Trainer : TextFile;
+        Trainer : train;
+        TTrain : array [0..1000] of train;
+        jmlTrain : integer;
+
+        File_Stats : TextFile;
+        stats : status;
+        TStats : array [0..1000] of status;
+        jmlStats : integer;
+
     procedure PokebonCSVtoArray(CSV : string);
     procedure InvenCSVtoArray(CSV : string);
+    procedure EvolutionCSVtoArray(CSV : string);
+    procedure TrainerCSVtoArray(CSV : string);
+    procedure StatsCSVtoArray(CSV : string);
     
-
-    //procedure EvolutionCSVtoArray();
 implementation
     
 
@@ -177,57 +201,181 @@ implementation
         close(File_Inven);
 	end;
 
-end.
-    {procedure EvolutionCSVtoArray();
-    begin
-        var 
+
+    procedure EvolutionCSVtoArray(CSV:string);
+    var 
+		baris : integer;
+		CC,tempText : string;
+		kolom : integer;
+        i:integer;
+	begin
+		assign(File_Evolusi,CSV);
+		reset(File_Evolusi);
+		if(eof(File_Evolusi))then
+		begin
+			writeln('File kosong');
+		end else 
+        begin
+            jmlEvo:=0;
+            baris:=0;
+            while(not(eof(File_Evolusi)))do
+            begin
+                readln(File_Evolusi,CC);
+                kolom:=0;
+                i:=1;
+                tempText:='';
+                while(i<=length(CC)+1)do
+                begin
+                    if ( (CC[i] = ',') or (i=length(CC)+1) or (CC[i]='-') )then
+                    begin
+                        if(kolom=0)then
+                        begin
+                            TEvo[baris].ID_Evolusi := tempText;
+                        end else
+                        begin
+                            TEvo[baris].Alur_Evolusi[kolom]:=tempText;
+                        end;
+                        tempText:='';
+                        kolom:=kolom+1;
+                    end else
+                    begin
+                        tempText := tempText+CC[i];
+                    end;
+                    i:=i+1;
+                end;
+                last_Ev[baris]:=kolom-1;//buat liat evolusi terakhir baris ke-n
+                baris:=baris+1;
+                if(baris>=1)then
+                begin
+                    jmlEvo:=jmlEvo+1;
+                end;
+
+            end;
+
+		end;
+    end;
+
+
+procedure TrainerCSVtoArray(CSV : string);
+	var 
 		baris : integer;
 		CC : string;
 		kolom : integer;
-		jmlInv : integer;
         i:integer;
-        last_Ev : array [1..100] of integer;
-        k:integer;
+        tempText : string;
+        tempday : integer;
 	begin
-		assign(File_Evolusi,'file');
-		reset(File_Evolusi);
-		if(eof(File_Inven))then
+		assign(File_Trainer,CSV);
+		reset(File_Trainer);
+		if(eof(File_Trainer))then
 		begin
 			writeln('File kosong');
-		end else begin
-			jmlEvo := 0;
+		end else 
+        begin
+			jmlTrain := 0;
 			baris := 0;
-			kolom := 0;
-            i:=0;
-            k:=0;
-			repeat
-				readln(File_Evolusi,CC);
-                while (i<=length(CC)+1) do
+			
+			while (not(eof(File_Trainer)))do
+            begin
+                tempText:='';
+				readln(File_Trainer,CC);
+                kolom := 0;
+                i:=1;
+                {while (kolom<4) do
+                begin}
+                while(i<=length(CC)+1)do //masukin pokebon sesuai kolom
                 begin
-                    while(CC <> mark or  CC <> '-')do //masukin evo 
+                    if((CC[i] = ',') or (i=length(CC)+1))then
                     begin
                         if(kolom=0) then
                         begin
-                            TEvo[baris].ID_Evolusi := baris;
-
-                        end else //kolom evolusi mulai dari 1
+                            TTrain[baris].Nama := tempText;
+                        end else if (kolom =1)then
                         begin
-                            TEvo[baris].Alur_Evolusi[kolom] := TEvo[baris].Alur_Evolusi[kolom] + CC[i];
+                            TTrain[baris].Day_Passed := tempText;
+                        end else if (kolom =2)then
+                        begin
+                            TTrain[baris].File_Inventori := tempText;
+                        end else
+                        begin
+                            TTrain[baris].File_Stats := tempText;
                         end;
-                    end;
-                    
-                    kolom := kolom+1;
-                    i := i+1;
-                    
-                end; 
-                last_Ev[k] := kolom;
+                        kolom := kolom+1;
+                        tempText := '';                       
+                    end else
+                    begin
+                        tempText := tempText + CC[i];
+                    end;                       
+                    i := i+1;                    
+                end;
+
                 baris := baris+1; //baris ditambah 1
-                kolom := 0; //reset kolom 
-                if(baris>1)then
+                if(baris>=1)then
                 begin
-                    jmlEvo := jmlEvo + 1;
-                end;        
-			until (eof(File_Evolusi));
+                    jmlTrain := jmlTrain+1;    
+                end;
+                
+     
+			end;
 		end;
-        close(File_Inven);   
-    end;}
+        close(File_Trainer);
+	end;
+
+    procedure StatsCSVtoArray(CSV : string);
+	var 
+		baris : integer;
+		CC : string;
+		kolom : integer;
+        i:integer;
+        tempText : string;
+	begin
+		assign(File_Stats,CSV);
+		reset(File_Stats);
+		if(eof(File_Stats))then
+		begin
+			writeln('File kosong');
+		end else 
+        begin
+			jmlStats := 0;
+			baris := 0;
+			
+			while (not(eof(File_Stats)))do
+            begin
+                tempText:='';
+				readln(File_Stats,CC);
+                kolom := 0;
+                i:=1;
+                {while (kolom<4) do
+                begin}
+                while(i<=length(CC)+1)do //masukin pokebon sesuai kolom
+                begin
+                    if((CC[i] = ',') or (i=length(CC)+1))then
+                    begin
+                        if(kolom=0) then
+                        begin
+                            TStats[baris].Nama_Pokebon := tempText;
+                        end else
+                        begin
+                            TStats[baris].Max_Level := tempText;
+                        end;
+                        kolom := kolom+1;
+                        tempText := '';                       
+                    end else
+                    begin
+                        tempText := tempText + CC[i];
+                    end;                       
+                    i := i+1;                    
+                end;
+
+                baris := baris+1; //baris ditambah 1
+                if(baris>=1)then
+                begin
+                    jmlStats := jmlStats+1;    
+                end;
+                
+     
+			end;
+		end;
+        close(File_Stats);
+	end;
+end.
