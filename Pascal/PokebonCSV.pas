@@ -67,6 +67,7 @@ interface
     procedure EvolutionCSVtoArray(CSV : string);
     procedure TrainerCSVtoArray(CSV : string);
     procedure StatsCSVtoArray(CSV : string);
+    
 implementation
     
 
@@ -262,6 +263,7 @@ procedure TrainerCSVtoArray(CSV : string);
 		kolom : integer;
         i:integer;
         tempText : string;
+        tempday : integer;
 	begin
 		assign(File_Trainer,CSV);
 		reset(File_Trainer);
