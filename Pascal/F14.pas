@@ -2,16 +2,16 @@ unit F14;
 
 interface
     uses
-        PokebonCSV;
+        PokebonCSV,sysutils;
     
     procedure tidur();
 
 implementation
-    procedure tidur()
+    procedure tidur();
     var 
         i:integer;
     begin
-        Trainer[x].Day_Passed : Trainer.Day_Passed +1;
+        Trainer[x].Day_Passed : IntToInt(StrToInt(Trainer.Day_Passed) +1);
         for i:=1 to jmlInv-1 do
         begin
             TInv[i].kondisi := 'Sehat';
