@@ -1,11 +1,84 @@
+unit F08;
+
 interface
     uses 
-        PokebonCSV;
-        procedure stats();
+        PokebonCSV,F01;
 
+    var
+        unik :integer;
+    procedure stats();
+    procedure cariUnik();
+    procedure printStats();
 implementation
     procedure stats();
+    var
+        i,j:integer;
+        cari:boolean;
     begin
-        
+        for i:=1 to jmlInv do
+        begin
+            j:=1;
+            cari := false;
+            while ((not cari) and (j<=jmlStats-1))do
+            begin
+                if(TInv[i].Nama_Pokebon = TStats[j].Nama_Pokebon)then
+                begin
+                    if(TInv[i].Level>TStats[j].Max_Level)then
+                    begin
+                        TStats[j].Max_Level := TInv[i].Level;
+                    end;
+                    cari := True;
+
+                end; 
+                j := j+1;
+            end;
+            if(not cari)then
+            begin
+                jmlStats := jmlStats +1;
+                TStats[jmlStats].Nama_Pokebon := TInv[i].Nama_Pokebon;
+                TStats[jmlStats].Max_Level := TInv[i].Level;
+            end;
+
+        end;
+    end;
+
+    procedure cariUnik();
+    var
+        i,j:integer;
+        cari:boolean;
+    begin
+        unik:=0;
+        for i:=1 to jmlInv-1 do
+        begin
+            j:=1;
+            cari := false;
+            while ((not cari) and (j<=jmlInv-1))do
+            begin
+                if(TInv[i].Nama_Pokebon <> TInv[j].Nama_Pokebon)then
+                begin                   
+                    cari := True;
+                end; 
+                j := j+1;
+            end;
+            if(not cari)then
+            begin
+                unik:=unik+1;
+            end;
+
+        end;    
+    end;
+
+
+    procedure printStats();
+    var
+        i:integer;
+    begin
+        writeln('Sekarang adalah hari ke-',TTrain[user].Day_Passed);
+        writeln('Pokebon unik yang dimiliki:',unik,'/',jmlInv);
+        writeln('Maksimum level dari setiap pokebon:');
+        for i:=1 to jmlStats-1 do
+        begin
+            writeln(TStats[i].Nama_Pokebon,'|',TStats[i].Max_Level);
+        end;
     end;
 end.

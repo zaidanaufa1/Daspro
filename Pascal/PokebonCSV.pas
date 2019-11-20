@@ -119,6 +119,9 @@ implementation
                         end;
                         tempText := '';
                         kolom := kolom+1;
+                    end else if (CC[i]=' ') then
+                    begin
+                        
                     end else
                     begin
                         tempText := tempText + CC[i];
@@ -181,7 +184,10 @@ implementation
                             TInv[baris].kondisi := tempText;
                         end;
                         kolom := kolom+1;
-                        tempText := '';                       
+                        tempText := '';
+                    end else if (CC[i]=' ') then
+                    begin
+
                     end else
                     begin
                         tempText := tempText + CC[i];
@@ -237,6 +243,9 @@ implementation
                         end;
                         tempText:='';
                         kolom:=kolom+1;
+                    end else if (CC[i]=' ') then
+                    begin
+
                     end else
                     begin
                         tempText := tempText+CC[i];
@@ -301,7 +310,10 @@ procedure TrainerCSVtoArray(CSV : string);
                             TTrain[baris].File_Stats := tempText;
                         end;
                         kolom := kolom+1;
-                        tempText := '';                       
+                        tempText := ''; 
+                    end else if (CC[i]=' ') then
+                    begin
+
                     end else
                     begin
                         tempText := tempText + CC[i];
@@ -359,7 +371,10 @@ procedure TrainerCSVtoArray(CSV : string);
                             TStats[baris].Max_Level := tempText;
                         end;
                         kolom := kolom+1;
-                        tempText := '';                       
+                        tempText := '';
+                    end else if (CC[i]=' ') then
+                    begin
+                                           
                     end else
                     begin
                         tempText := tempText + CC[i];

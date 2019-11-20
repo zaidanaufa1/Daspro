@@ -19,11 +19,11 @@ implementation
             writeln('Pelepasan berhasil');
             for i:=nomor+1 to jmlInv-1 do
             begin
-                TInv[i-1].Nomor_Inventori := IntToStr(StrToInt(TInv[i-1].Nomor_Inventori)-1);
+                TInv[i].Nomor_Inventori := IntToStr(StrToInt(TInv[i].Nomor_Inventori)-1);
                 TInv[i-1] := TInv[i];
                 
             end; 
-            jmlPokebon := jmlPokebon-1;
+            jmlInv := jmlInv-1;
             listInven();   
         end;
     end;
