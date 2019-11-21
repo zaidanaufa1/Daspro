@@ -1,6 +1,6 @@
 Program main;
 
-uses PokebonCSV,F01,F02,F03,F04,F06,F07,F08,F09,F10,F11,F12,F13,F14;
+uses PokebonCSV,F01,F02,F03,F04,F06,F07,F08,F09,F10,F11,F12,F13,F14,F15;
 
 var
     pok,evo,trn:string;
@@ -67,6 +67,7 @@ begin
         writeln('11.Lihat chart evolusi');
         writeln('13.Evolusi Pokebon');
         writeln('14.Tidur');
+        writeln('15.Save File');
         writeln('0.Exit');
         write('Masukkan hal yang ingin dilakukan: ');readln(choice);
         if (choice = 2) then
@@ -112,6 +113,9 @@ begin
         begin
             batas();
             tidur();
+        end else if(choice=15)then
+        begin
+            save();
         end else  if(choice=0)then
         begin
             batas();
