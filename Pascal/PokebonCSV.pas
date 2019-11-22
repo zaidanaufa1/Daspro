@@ -33,6 +33,12 @@ interface
         Max_Level : string;
     end;
 
+    type
+    EncounterChance = record
+                      ArrNamaPokebon : array [1..1000] of string;
+                      Neff : integer;
+                      end;
+
     const
         mark  =',';
     var

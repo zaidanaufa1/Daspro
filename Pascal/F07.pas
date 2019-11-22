@@ -2,7 +2,7 @@ unit F07;
 
 interface
     uses 
-        PokebonCSV,sysutils;
+        PokebonCSV,sysutils,F05;
     procedure bertarung ();
 
 implementation
@@ -10,12 +10,13 @@ implementation
     var
         inp : integer;
         //indeks : integer;
-        //ketemu : boolean;
+        ketemu : string;
         //chance : integer;
         //cape: boolean;
     begin
         Randomize;
-        writeln('Kamu menemukan: pikaboo');
+        ketemu := EncounterChance(Tencounter.Neff);
+        writeln('Kamu menemukan: ', ketemu);
         write('Pilih pokebon!');
         readln(inp);
         //cari pokebon
