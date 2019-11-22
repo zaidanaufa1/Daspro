@@ -4,9 +4,9 @@ uses
 PokebonCSV;
 procedure save;
 procedure savepokebon(NamaFile : string);
-{procedure saveevolusi();
-procedure saveinventori();
-procedure savestats();
+procedure saveevolusi(NamaFile: string);
+procedure saveinventori(NamaFile: string);
+procedure savestats(NamaFile : string);
 }
 implementation
 

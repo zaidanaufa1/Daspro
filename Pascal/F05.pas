@@ -6,8 +6,9 @@ uses
 PokebonCSV,sysutils;
 
 {Agar mempermudah setiap pokemon awal/rank1 (yang tidak mempunyai pokemon
-yang berevolusi menjadi dirinya(sumber evolusi) memiliki 10(defaultPoke-1) petak array, dan pokemon
-yang memiliki sumber evolusi pokemon rank1) meiliki petak array default - 1 ,begitupun setelahnya  )}
+yang berevolusi menjadi dirinya(sumber evolusi) memiliki 10(defaultPoke-1) petak array, dan pokemon rank 2
+(yang memiliki sumber evolusi pokemon rank1) meiliki petak array defaultPoke - 2 ,begitupun setelahnya, 
+jadi rank X pokemon memiliki petak array defaultPoke - x  }
 
     function EncounterChance(Neff : integer):string;
     procedure InputArrEncounter(NamaPokebon: string, IPos :integer, jumlah : integer);
@@ -70,7 +71,7 @@ implementation
                 end;
             end;
         end;
-
+end.
 
 
 
