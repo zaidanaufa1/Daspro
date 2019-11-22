@@ -10,22 +10,22 @@ yang berevolusi menjadi dirinya(sumber evolusi) memiliki 10(defaultPoke-1) petak
 (yang memiliki sumber evolusi pokemon rank1) meiliki petak array defaultPoke - 2 ,begitupun setelahnya, 
 jadi rank X pokemon memiliki petak array defaultPoke - x  }
 
-    function EncounterChance(Neff : integer):string;
-    procedure InputArrEncounter(NamaPokebon: string, IPos :integer, jumlah : integer);
-    procedure PrintEncounterChance()
-    procedure makeArrEcounterChance()
+    function EncounterChance(T: EncounterChance ;Neff : integer):string;
+    procedure InputArrEncounter(NamaPokebon: string; IPos , jumlah : integer);
+    procedure PrintEncounterChance();
+    procedure makeArrEcounterChance();
 
 
 implementation
 
-    function EncounterChance(Neff : integer):string;
+    function EncounterChance(T: EncounterChance ;Neff : integer):string;
     
         begin
         Randomize;
-        EncounterChance := Tencounter.ArrNamaPokebon[(Random(Neff))]
+        EncounterChance := T.ArrNamaPokebon[(Random(Neff))]
         end;
 
-    procedure InputArrEncounter(NamaPokebon: string, IPos :integer, jumlah : integer);
+    procedure InputArrEncounter(NamaPokebon: string; IPos , jumlah : integer);
         begin
         while Ipos <= jumlah do
             begin
@@ -33,31 +33,30 @@ implementation
             end;
         end;
 
-    procedure PrintEncounterChance()
+    procedure PrintEncounterChance();
     
         Const
-        defaultPoke :=11;
+        defaultPoke =11;
     
         var
-        i : integer;
+        i,j : integer;
     
         begin   
         writeln ('Kemungkinan menemukan setiap pokebon:');
         for i := 1 to jmlEvo-1 do
             begin
-            while j := 1 to last_Ev[i] do 
-            writeln(TEvo[i].Alur_Evolusi[j],' = ', (((defaultPoke * 100) / Tencounter.Neff):0:2), '%')
+            for j := 1 to last_Ev[i] do 
+            writeln(TEvo[i].Alur_Evolusi[j],' = ', (((defaultPoke * 100)/Tencounter.Neff)):0:2, '%');
             end;
         end;
 
-    procedure makeArrEcounterChance()
+    procedure makeArrEcounterChance();
 
         Const
         defaultPoke := 11;
 
         var
         i, j : integer;
-        Tencounter : EncounterChance;
         
         begin
         Tencounter.Neff := 1;

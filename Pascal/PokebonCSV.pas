@@ -68,6 +68,7 @@ interface
         TStats : array [0..1000] of status;
         jmlStats : integer;
 
+        Tencounter : EncounterChance;
     procedure PokebonCSVtoArray(CSV : string);
     procedure InvenCSVtoArray(CSV : string);
     procedure EvolutionCSVtoArray(CSV : string);

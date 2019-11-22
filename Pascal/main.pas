@@ -12,6 +12,7 @@ begin
     EvolutionCSVtoArray('Alur_Evolusi.csv');
     TrainerCSVtoArray('trainer.csv');
     login();
+    makeArrEcounterChance();
     if (roleAdmin)then//kalo admin bisa ngubah file pokebon,alur evolusi yang sudah ada
     begin
         write('Masukkan file pokebon: ');readln(pok);
@@ -62,6 +63,7 @@ begin
         writeln('2. Pokebon Database (pokedex)');
         writeln('3. Mengecek Inventori (inventori)');
         writeln('4. Lepaskan Pokebon (lepas)');
+        writeln('5. Melihat Kemungkinan Bertemu Pokebon (pokebonChance)');
         writeln('6. Menangkap Pokebon (tangkap)');
         writeln('7. Bertarung (tarung)');
         writeln('8.Lihat stats (statistik)');
@@ -85,6 +87,9 @@ begin
             pelepasan();
             stats();
             cariUnik();
+        end else if(strchoice='pokebonChance')then
+        begin
+        printEncounterChance();
         end else if(strchoice='tangkap')then
         begin
             batas();
