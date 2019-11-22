@@ -29,13 +29,14 @@ implementation
            writeln('User admin telah login'); 
         end else
         begin
-            while( (i<=jmlTrain-1) and (not cari))do
+            while( (i<=jmlTrain-1) and (not cari) )do//search user di indeks berapa
             begin
                 if(TTrain[i].Nama = nama)then
                 begin
                     cari:=true;
                     user :=i;
                 end;   
+                i := i+1;
             end;
 
             if(not cari)then
