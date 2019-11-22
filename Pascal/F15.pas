@@ -30,12 +30,12 @@ implementation
             end;
         close(CSV)
         end;
-        CSV : Text ;
+      {  CSV : Text ;
         i : integer;
         isi : string;
-
-    procedure saveevolusi(NamaFile: string);
-        var
+}
+    {procedure saveevolusi(NamaFile: string);}
+        
     procedure save();
         var
         NamaFilePok : string;

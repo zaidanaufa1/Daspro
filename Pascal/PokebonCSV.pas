@@ -125,10 +125,7 @@ implementation
                             TPok[baris].Evolusi_Selanjutnya := tempText;
                         end;
                         tempText := '';
-                        kolom := kolom+1;
-                    end else if (CC[i]=' ') then
-                    begin
-                        
+                        kolom := kolom+1;  
                     end else
                     begin
                         tempText := tempText + CC[i];
@@ -192,9 +189,6 @@ implementation
                         end;
                         kolom := kolom+1;
                         tempText := '';
-                    end else if (CC[i]=' ') then
-                    begin
-
                     end else
                     begin
                         tempText := tempText + CC[i];
@@ -244,16 +238,13 @@ implementation
                         if(kolom=0)then
                         begin
                             TEvo[baris].ID_Evolusi := tempText;
-                        end else
+                        end else 
                         begin
                             TEvo[baris].Alur_Evolusi[kolom]:=tempText;
                         end;
                         tempText:='';
                         kolom:=kolom+1;
-                    end else if (CC[i]=' ') then
-                    begin
-
-                    end else
+                    end else 
                     begin
                         tempText := tempText+CC[i];
                     end;
@@ -318,10 +309,7 @@ procedure TrainerCSVtoArray(CSV : string);
                         end;
                         kolom := kolom+1;
                         tempText := ''; 
-                    end else if (CC[i]=' ') then
-                    begin
-
-                    end else
+                    end else 
                     begin
                         tempText := tempText + CC[i];
                     end;                       
@@ -339,7 +327,7 @@ procedure TrainerCSVtoArray(CSV : string);
 		end;
         close(File_Trainer);
 	end;
-
+    
     procedure StatsCSVtoArray(CSV : string);
 	var 
 		baris : integer;
@@ -379,10 +367,7 @@ procedure TrainerCSVtoArray(CSV : string);
                         end;
                         kolom := kolom+1;
                         tempText := '';
-                    end else if (CC[i]=' ') then
-                    begin
-                                           
-                    end else
+                    end else 
                     begin
                         tempText := tempText + CC[i];
                     end;                       

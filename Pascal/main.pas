@@ -1,6 +1,6 @@
 Program main;
 
-uses PokebonCSV,F01,F02,F03,F04,F06,F07,F08,F09,F10,F11,F12,F13,F14,F15;
+uses PokebonCSV,F01,F02,F03,F04,F05,F06,F07,F08,F09,F10,F11,F12,F13,F14,F15;
 
 var
     pok,evo,trn:string;
@@ -10,9 +10,9 @@ begin
     {default file}
     PokebonCSVtoArray('pokemon.csv');
     EvolutionCSVtoArray('Alur_Evolusi.csv');
-    TrainerCSVtoArray('trainer.csv');
-    login();
     makeArrEcounterChance();
+    {TrainerCSVtoArray('trainer.csv');
+    login();
     if (roleAdmin)then//kalo admin bisa ngubah file pokebon,alur evolusi yang sudah ada
     begin
         write('Masukkan file pokebon: ');readln(pok);
@@ -55,7 +55,7 @@ begin
             end;
         until (choice=0);
     end else
-    begin
+    begin}
 
         repeat
         writeln('');
@@ -135,6 +135,6 @@ begin
             
     until (strchoice = 'exit');
    
-    end;  
+    {end;}  
 
 end.

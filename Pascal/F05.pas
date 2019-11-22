@@ -40,20 +40,22 @@ implementation
     
         var
         i,j : integer;
+        persen : single;
     
         begin   
         writeln ('Kemungkinan menemukan setiap pokebon:');
         for i := 1 to jmlEvo-1 do
             begin
-            for j := 1 to last_Ev[i] do 
-            writeln(TEvo[i].Alur_Evolusi[j],' = ', (((defaultPoke * 100)/Tencounter.Neff)):0:2, '%');
+            for j := 1 to last_Ev[i] do
+            persen := (((defaultPoke * 100)/Tencounter.Neff));
+            writeln(TEvo[i].Alur_Evolusi[j],' = ',persen:0:2, '%');
             end;
         end;
 
     procedure makeArrEcounterChance();
 
         Const
-        defaultPoke := 11;
+        defaultPoke = 11;
 
         var
         i, j : integer;
@@ -66,7 +68,6 @@ implementation
                 begin
                 InputArrEncounter((Tevo[i].Alur_Evolusi[j]),Tencounter.Neff,(defaultPoke-j));
                 Tencounter.Neff := Tencounter.Neff + (defaultPoke-j);
-                j := j + 1;
                 end;
             end;
         end;

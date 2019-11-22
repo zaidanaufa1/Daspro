@@ -15,7 +15,7 @@ implementation
         //cape: boolean;
     begin
         Randomize;
-        ketemu := EncounterChance(Tencounter.Neff);
+        ketemu := EncounterChance(Tencounter,Tencounter.Neff);
         writeln('Kamu menemukan: ', ketemu);
         write('Pilih pokebon!');
         readln(inp);
