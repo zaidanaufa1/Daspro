@@ -126,7 +126,8 @@ implementation
                     begin
                         tempText := tempText + CC[i];
                     end;                       
-                    i := i+1;  
+                    i := i+1; 
+                    //end 
                 end;
 
                 baris := baris+1; //baris ditambah 1
