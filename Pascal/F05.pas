@@ -13,7 +13,7 @@ jadi rank X pokemon memiliki petak array defaultPoke - x  }
     function EncounterChance(T: EncounterChance ;Neff : integer):string;
     procedure InputArrEncounter(NamaPokebon: string; IPos , jumlah : integer);
     procedure PrintEncounterChance();
-    procedure makeArrEcounterChance();
+    procedure makeArrEncounterChance();
 
 
 implementation
