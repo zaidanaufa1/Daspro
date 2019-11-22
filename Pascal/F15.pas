@@ -18,11 +18,11 @@ implementation
 
     begin
     Assign(CSV,NamaFile);
-    isi := '';
     i := 0;
     Rewrite(CSV);
-    while i <= jmlPokebon do 
+    while i <= jmlPokebon-1 do 
         begin
+            isi := '';
             isi := isi + ((TPok[i].ID_Pokebon)+','+(TPok[i].Nama)+','+(TPok[i].Tipe)+','+(TPok[i].Evolusi_Selanjutnya));
             writeln(CSV,isi);
             i := i +1;
