@@ -3,7 +3,7 @@ Program main;
 uses PokebonCSV,F01,F02,F03,F04,F06,F07,F08,F09,F10,F11,F12,F13,F14,F15;
 
 var
-    pok,evo,trn:string;
+    pok,inv,evo,trn,sts:string;
     choice : integer;
 begin
     {default file}
@@ -12,48 +12,19 @@ begin
     TrainerCSVtoArray('trainer.csv');
     login();
     if ( roleAdmin)then//kalo admin bisa ngubah file pokebon,alur evolusi yang sudah ada
-    begin
-        writeln('Masukkan file pokebon: ');readln(pok);
-        writeln('Masukkan file evolusi: ');readln(evo);  
-        writeln('Masukkan file trainer: ');readln(trn);
-        PokebonCSVtoArray(pok);
-        EvolutionCSVtoArray(evo);
-        TrainerCSVtoArray(trn);
-        repeat
-            writeln('');
-            writeln('--------------------Menu--------------------');
-            writeln('1. Membuat Pokebon');
-            writeln('2. Membuat Evolusi Pokebon');
-            writeln('3.Menghapus Evolusi Pokebon');
-            writeln('0.Exit');
-            writeln('Pengen ngapain: ');readln(choice);
-            if(choice=1)then
-            begin
-                batas();
-                tambahPokebon(); 
-                printPokeDex();    
-            end else if(choice=2)then
-            begin
-                batas();
-                AddEvolution();
-                printEvo();        
-            end else if(choice=3)then
-            begin
-                batas();
-                hapusEvo();
-                printEvo();    
-            end else if(choice=0)then
-            begin
-                batas();
-                writeln('Babay');
-            end else
-            begin
-                batas();
-                writeln('Input ngaco');
-            end;
-        until (choice=0);
-    end else
-    begin
+    begin    
+    write('Masukkan file pokebon: ');readln(pok);
+    write('Masukkan file inventori: ');readln(inv);
+    write('Masukkan file evolusi: ');readln(evo);
+    Write('Masukan file trainer: ');readln(trn);
+    write('Masukan file Stats: ');readln(sts);
+    //loading file
+    PokebonCSVtoArray(pok);
+    InvenCSVtoArray(inv);
+    EvolutionCSVtoArray(evo);
+    TrainerCSVtoArray(trn);
+    StatsCSVtoArray(sts);
+    
 
         repeat
         writeln('');
