@@ -52,7 +52,7 @@ implementation
             end;
         end;
 
-    procedure makeArrEcounterChance();
+    procedure makeArrEncounterChance();
 
         Const
         defaultPoke = 11;
