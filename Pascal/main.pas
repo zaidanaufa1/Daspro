@@ -1,17 +1,16 @@
 Program main;
 
-uses PokebonCSV,F01,F02,F03,F04,F05,F06,F07,F08,F09,F10,F11,F12,F13,F14,F15;
+uses PokebonCSV,F01,F02,F03,F04,F06,F07,F08,F09,F10,F11,F12,F13,F14,F15;
 
 var
     pok,evo,trn:string;
     choice : integer;
-    strchoice : string;
+    str_choice : string;
 begin
     {default file}
     PokebonCSVtoArray('pokemon.csv');
     EvolutionCSVtoArray('Alur_Evolusi.csv');
-    makeArrEcounterChance();
-    {TrainerCSVtoArray('trainer.csv');
+    TrainerCSVtoArray('trainer.csv');
     login();
     if (roleAdmin)then//kalo admin bisa ngubah file pokebon,alur evolusi yang sudah ada
     begin
@@ -22,107 +21,164 @@ begin
         EvolutionCSVtoArray(evo);
         TrainerCSVtoArray(trn);
         repeat
-            writeln('');
-            writeln('--------------------Menu--------------------');
-            writeln('1. Membuat Pokebon');
-            writeln('2. Membuat Evolusi Pokebon');
-            writeln('3. Menghapus Evolusi Pokebon');
-            writeln('0.Exit');
-            write('Pengen ngapain: ');readln(choice);
-            if(choice=1)then
-            begin
-                batas();
-                tambahPokebon(); 
-                printPokeDex();    
-            end else if(choice=2)then
-            begin
-                batas();
-                AddEvolution();
-                printEvo();        
-            end else if(choice=3)then
-            begin
-                batas();
-                hapusEvo();
-                printEvo();    
-            end else if(choice=0)then
-            begin
-                batas();
-                writeln('Babay');
-            end else
-            begin
-                batas();
-                writeln('Input ngaco');
-            end;
-        until (choice=0);
-    end else
-    begin}
-
-        repeat
         writeln('');
         writeln('--------------------Menu--------------------');
-        writeln('2. Pokebon Database (pokedex)');
-        writeln('3. Mengecek Inventori (inventori)');
-        writeln('4. Lepaskan Pokebon (lepas)');
-        writeln('5. Melihat Kemungkinan Bertemu Pokebon (pokebonChance)');
-        writeln('6. Menangkap Pokebon (tangkap)');
-        writeln('7. Bertarung (tarung)');
-        writeln('8.Lihat stats (statistik)');
-        writeln('11.Lihat chart evolusi (lihatEvolusi)');
-        writeln('13.Evolusi Pokebon (evolusi)');
-        writeln('14.Tidur (tidur)');
-        writeln('15.Save File (save)');
+        writeln('1. Pokebon Database (pokedex)');
+        writeln('2. Mengecek Inventori (inventori)');
+        writeln('3. Lepaskan Pokebon (lepas)');
+        writeln('4. Melihat kemungkinan bertemu Pokebon (pokebonChance)');
+        writeln('5. Menangkap Pokebon (tangkap)');
+        writeln('6. Bertarung (tarung)');
+        writeln('7. Lihat stats (statistik)');
+        writeln('8. Membuat Pokebon (buatPokebon)');
+        writeln('9. Membuat Evolusi Pokebon baru (buatEvolusi)');
+        writeln('10. Lihat chart evolusi (lihatEvolusi)');
+        writeln('11. Menghapus tahapan evolusi pada Pokebon (hapusEvolusi)');
+        writeln('12. Evolusi Pokebon (evolusi)');
+        writeln('13. Tidur (tidur)');
+        writeln('14. Save File (save)');
         writeln('0.Exit (exit)');
-        write('Masukkan hal yang ingin dilakukan: ');readln(strchoice);
-        if (strchoice = 'pokedex') then
+        write('Masukkan hal yang ingin dilakukan: ');readln(str_choice);
+        if (str_choice = 'pokedex') then
         begin
             batas();
             printPokeDex();
-        end else if(strchoice='inventori')then
+        end else if(str_choice='inventori')then
         begin
             batas();
             listInven();   
-        end else if(strchoice='lepas')then
+        end else if(str_choice='lepas')then
         begin
             batas();
             pelepasan();
             stats();
             cariUnik();
-        end else if(strchoice='pokebonChance')then
+        end else if(str_choice='pokebonChance')then
         begin
-        printEncounterChance();
-        end else if(strchoice='tangkap')then
+            batas();
+            PrintEncounterChance();
+        end else if(str_choice='tangkap')then
         begin
             batas();
             tangkap();
             stats();
             cariUnik();
-        end else if(strchoice='tarung')then
+        end else if(str_choice='tarung')then
         begin
             batas();
             bertarung();
             stats();
             cariUnik();
-        end else if(strchoice='statistik')then
+        end else if(str_choice='statistik')then
+        begin
+            stats();
+            cariUnik();
+            printStats();  
+        end else if(str_choice='buatPokebon')then
+        begin
+            batas();
+            tambahPokebon(); 
+            printPokeDex(); 
+        end else if(str_choice='buatEvolusi')then
+        begin
+            batas();
+            AddEvolution();
+            printEvo();   
+        end else if(str_choice='lihatEvolusi')then
+        begin
+            batas();
+            printEvo();
+        end else if(str_choice='hapusEvolusi')then
+        begin
+            batas();
+            hapusEvo();
+            printEvo(); 
+        end else if(str_choice='evolusi')then
+        begin
+            batas();
+            EvoPok();
+        end else if(str_choice='tidur')then
+        begin
+            batas();
+            tidur();
+        end else if(str_choice='save')then
+        begin
+            save();
+        end else  if(str_choice='exit')then
+        begin
+            batas();
+            writeln('See you next time!');
+        end else
+        begin
+            writeln('Masukkan salah');
+            writeln('Masukkan input seperti yang tertera pada kurung di Menu.'); 
+        end;
+        until (str_choice= 'exit');
+    end else
+    begin
+
+        repeat
+        writeln('');
+        writeln('--------------------Menu--------------------');
+        writeln('1. Pokebon Database (pokedex)');
+        writeln('2. Mengecek Inventori (inventori)');
+        writeln('3. Lepaskan Pokebon (lepas)');
+        writeln('4. Menangkap Pokebon (tangkap)');
+        writeln('5. Bertarung (tarung)');
+        writeln('6.Lihat stats (statistik)');
+        writeln('7.Lihat chart evolusi (lihatEvolusi)');
+        writeln('8.Evolusi Pokebon (evolusi)');
+        writeln('9.Tidur (tidur)');
+        writeln('10.Save File (save)');
+        writeln('0.Exit (exit)');
+        write('Masukkan hal yang ingin dilakukan: ');readln(str_choice);
+        if (str_choice = 'pokedex') then
+        begin
+            batas();
+            printPokeDex();
+        end else if(str_choice='inventori')then
+        begin
+            batas();
+            listInven();   
+        end else if(str_choice='lepas')then
+        begin
+            batas();
+            pelepasan();
+            stats();
+            cariUnik();
+        end else if(str_choice='tangkap')then
+        begin
+            batas();
+            tangkap();
+            stats();
+            cariUnik();
+        end else if(str_choice='tarung')then
+        begin
+            batas();
+            bertarung();
+            stats();
+            cariUnik();
+        end else if(str_choice='statistik')then
         begin
             stats();
             cariUnik();
             printStats();        
-        end else if(strchoice='lihatEvolusi')then
+        end else if(str_choice='lihatEvolusi')then
         begin
             batas();
             printEvo();
-        end else if(strchoice='evolusi')then
+        end else if(str_choice='evolusi')then
         begin
             batas();
             EvoPok();
-        end else if(strchoice='tidur')then
+        end else if(str_choice='tidur')then
         begin
             batas();
             tidur();
-        end else if(strchoice='save')then
+        end else if(str_choice='save')then
         begin
             save();
-        end else  if(strchoice='exit')then
+        end else  if(str_choice='exit')then
         begin
             batas();
             writeln('See you next time!');
@@ -133,8 +189,8 @@ begin
         end;
             
             
-    until (strchoice = 'exit');
+    until (str_choice = 'exit');
    
-    {end;}  
+    end;  
 
 end.
