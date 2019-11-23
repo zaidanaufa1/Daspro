@@ -30,6 +30,7 @@ implementation
         while Ipos <= jumlah do
             begin
             Tencounter.ArrNamaPokebon[Ipos] := NamaPokebon;
+            ipos := ipos +1;
             end;
         end;
 
