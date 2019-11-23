@@ -23,7 +23,7 @@ implementation
         //indeks := 1;
         //ketemu := False;
         //cape := True;
-        if((inp>jmlInv) or (inp=0))then
+        if((inp>jmlInv-1) or (inp=0))then
         begin
             writeln('Tidak ada pokebon pada nomor tersebut');
         end else
