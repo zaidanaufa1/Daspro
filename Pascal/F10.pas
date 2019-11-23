@@ -72,7 +72,9 @@ implementation
                     last_Ev[i-1]:=last_Ev[i];
                 end;  
                 jmlEvo:=jmlEvo-1;  
+
             end;
+            writeln('Alur evolusi berhasil disambungkan') ;
         end;
         
         if(not cari1 and not cari2)then
@@ -82,6 +84,7 @@ implementation
             last_Ev[jmlEvo] := 2;
             TEvo[jmlEvo].ID_Evolusi := IntToStr(jmlEvo);
             jmlEvo:=jmlEvo+1;
+            writeln('Alur evolusi berhasil disambungkan') ;
         end else
         begin
             if( not cari2 ) then
@@ -89,7 +92,8 @@ implementation
                 if ( (kolom1=1) or (kolom1=last_Ev[baris1]) ) then
                 begin
                     TEvo[baris1].Alur_Evolusi[kolom1+1]:=next;
-                    last_Ev[baris1]:=last_Ev[baris1]+1;    
+                    last_Ev[baris1]:=last_Ev[baris1]+1;
+                    writeln('Alur evolusi berhasil disambungkan') ; 
                 end else
                 begin
                     if(state='update')then
