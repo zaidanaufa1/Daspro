@@ -22,15 +22,22 @@ implementation
         Assign(CSV,NamaFile);
         i := 0;
         Rewrite(CSV);
-        while i <= jmlTrain-1 do 
+        if jmlTrain =0 then
+        begin
+            writeln(CSV,'');
+        end else
+        begin
+            while i <= jmlTrain-1 do 
             begin
             isi := '';
             isi := isi + ((TTrain[i].Nama)+','+(TTrain[i].Day_Passed)+','+(TTrain[i].File_Inventori)+','+(TTrain[i].File_Stats));
             writeln(CSV,isi);
             i := i +1;
             end;
-        close(CSV)
+        close(CSV)   
         end;
+        
+    end;
 
     procedure saveinventori(NamaFile : string);
         var
@@ -42,6 +49,11 @@ implementation
         Assign(CSV,NamaFile);
         i := 0;
         Rewrite(CSV);
+        if jmlTrain =0 then
+        begin
+            writeln(CSV,'');
+        end else
+        begin
         while i <= jmlInv-1 do 
             begin
             isi := '';
@@ -51,7 +63,7 @@ implementation
             end;
         close(CSV)
         end;
-
+    end;
     procedure saveevolusi(NamaFile : string);
         var
         CSV : Text ;
@@ -64,6 +76,11 @@ implementation
         i := 0;
         j:=1;
         Rewrite(CSV);
+        if jmlTrain =0 then
+        begin
+            writeln(CSV,'');
+        end else
+        begin
         while i <= jmlEvo-1 do 
             begin
             isi :='';
@@ -82,7 +99,7 @@ implementation
             end;
         close(CSV)
         end;
-
+    end;
     procedure saveStats(NamaFile : string);
         var
         CSV : Text ;
@@ -93,6 +110,11 @@ implementation
         Assign(CSV,NamaFile);
         i := 0;
         Rewrite(CSV);
+        if jmlTrain =0 then
+        begin
+            writeln(CSV,'');
+        end else
+        begin
         while i <= jmlPokebon-1 do 
             begin
             isi := '';
@@ -102,7 +124,7 @@ implementation
             end;
         close(CSV)
         end;
-
+    end;
     procedure savepokebon(NamaFile : string);
         var
         CSV : Text ;
@@ -113,6 +135,11 @@ implementation
         Assign(CSV,NamaFile);
         i := 0;
         Rewrite(CSV);
+        if jmlTrain =0 then
+        begin
+            writeln(CSV,'');
+        end else
+        begin
         while i <= jmlPokebon-1 do 
             begin
             isi := '';
@@ -122,6 +149,7 @@ implementation
             end;
         close(CSV)
         end;
+    end;
       {  CSV : Text ;
         i : integer;
         isi : string;

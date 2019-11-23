@@ -15,6 +15,7 @@ begin
     login();
     if (roleAdmin)then//kalo admin bisa ngubah file pokebon,alur evolusi yang sudah ada
     begin
+        writeln('User telah login sebagai admin');
         write('Masukkan file pokebon: ');readln(pok);
         write('Masukkan file evolusi: ');readln(evo);  
         write('Masukkan file trainer: ');readln(trn);
