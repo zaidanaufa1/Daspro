@@ -2,12 +2,12 @@ unit F08;
 
 interface
     uses 
-        PokebonCSV,F01;
+        PokebonCSV,F01,F15;
 
     var
         unik :integer;
     procedure stats();
-    procedure cariUnik();
+    //procedure cariUnik();
     procedure printStats();
 implementation
     procedure stats();
@@ -35,14 +35,14 @@ implementation
             if(not cari)then
             begin
                 jmlStats := jmlStats +1;
-                TStats[jmlStats].Nama_Pokebon := TInv[i].Nama_Pokebon;
-                TStats[jmlStats].Max_Level := TInv[i].Level;
+                TStats[jmlStats-1].Nama_Pokebon := TInv[i].Nama_Pokebon;
+                TStats[jmlStats-1].Max_Level := TInv[i].Level;
             end;
 
         end;
     end;
 
-    procedure cariUnik();
+    {procedure cariUnik();
     var
         i,j:integer;
         cari:boolean;
@@ -66,7 +66,7 @@ implementation
             end;
 
         end;    
-    end;
+    end;}
 
 
     procedure printStats();
@@ -74,11 +74,13 @@ implementation
         i:integer;
     begin
         writeln('Sekarang adalah hari ke-',TTrain[user].Day_Passed);
-        writeln('Pokebon unik yang dimiliki:',unik,'/',jmlInv);
+        writeln('Pokebon unik yang dimiliki:',jmlStats-1,'/',jmlInv-1);
         writeln('Maksimum level dari setiap pokebon:');
-        for i:=1 to jmlStats-1 do
+        i:=1;
+        while i <= jmlStats-1 do
         begin
             writeln(TStats[i].Nama_Pokebon,'|',TStats[i].Max_Level);
+            i :=i+1;
         end;
     end;
 end.

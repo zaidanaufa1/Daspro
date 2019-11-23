@@ -7,16 +7,17 @@ interface
 
 implementation
     procedure tangkap();
-    //var
-        //i : integer;
+    var
+        i : integer;
     begin
+        //writeln('sebelum',jmlInv);
         writeln('Kamu mendapatkan: pikaboo');
         writeln('Isi inventori saat ini:');
         jmlInv := jmlInv+1;
-        TInv[jmlInv].Nomor_Inventori := IntToStr(jmlInv);
-        TInv[jmlInv].Nama_Pokebon := 'pikaboo';
-        TInv[jmlInv].Level := '1';
-        TInv[jmlInv].Kondisi := 'lelah';
+        TInv[jmlInv-1].Nomor_Inventori := IntToStr(jmlInv-1);
+        TInv[jmlInv-1].Nama_Pokebon := 'pikaboo';
+        TInv[jmlInv-1].Level := '1';
+        TInv[jmlInv-1].Kondisi := 'lelah';
         listInven();
     end;
 end.
