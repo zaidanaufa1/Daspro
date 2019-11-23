@@ -90,12 +90,6 @@ implementation
 
         assign (File_Pokebon,CSV);
         reset(File_Pokebon);
-        //read(File_Pokebon,CC);
-        if (eof(File_Pokebon))then
-        begin
-            writeln('File kosong');
-        end else
-        begin
             jmlPokebon := 0;
             baris := 0;//baris 0 untuk header
             
@@ -143,7 +137,7 @@ implementation
                 end;
                           
             end;
-        end;
+        
         close(File_Pokebon);
     end;
 
@@ -157,11 +151,6 @@ implementation
 	begin
 		assign(File_Inven,CSV);
 		reset(File_Inven);
-		if(eof(File_Inven))then
-		begin
-			writeln('File kosong');
-		end else 
-        begin
 			jmlInv := 0;
 			baris := 0;
 			
@@ -210,7 +199,7 @@ implementation
                 
      
 			end;
-		end;
+		
         close(File_Inven);
 	end;
 
@@ -224,11 +213,6 @@ implementation
 	begin
 		assign(File_Evolusi,CSV);
 		reset(File_Evolusi);
-		if(eof(File_Evolusi))then
-		begin
-			writeln('File kosong');
-		end else 
-        begin
             jmlEvo:=0;
             baris:=0;
             while(not(eof(File_Evolusi)))do
@@ -268,7 +252,7 @@ implementation
 
             end;
 
-		end;
+		close(File_Evolusi);
     end;
 
 
@@ -283,11 +267,6 @@ procedure TrainerCSVtoArray(CSV : string);
 	begin
 		assign(File_Trainer,CSV);
 		reset(File_Trainer);
-		if(eof(File_Trainer))then
-		begin
-			writeln('File kosong');
-		end else 
-        begin
 			jmlTrain := 0;
 			baris := 0;
 			
@@ -336,7 +315,6 @@ procedure TrainerCSVtoArray(CSV : string);
                 
      
 			end;
-		end;
         close(File_Trainer);
 	end;
 
@@ -350,11 +328,6 @@ procedure TrainerCSVtoArray(CSV : string);
 	begin
 		assign(File_Stats,CSV);
 		reset(File_Stats);
-		if(eof(File_Stats))then
-		begin
-			writeln('File kosong');
-		end else 
-        begin
 			jmlStats := 0;
 			baris := 0;
 			
@@ -397,7 +370,7 @@ procedure TrainerCSVtoArray(CSV : string);
                 
      
 			end;
-		end;
+		
         close(File_Stats);
 	end;
 end.
