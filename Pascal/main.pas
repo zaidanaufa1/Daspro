@@ -163,14 +163,14 @@ begin
         begin
             batas();
             bertarung();
-            stats();
+            //stats();
             //cariUnik();
         end else if(str_choice='statistik')then
         begin
             stats();
             //cariUnik();
             printStats();  
-            saveStats(TTrain[user].File_Stats);      
+            //saveStats(TTrain[user].File_Stats);      
         end else if(str_choice='lihatEvolusi')then
         begin
             batas();
