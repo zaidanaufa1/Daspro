@@ -11,7 +11,7 @@ implementation
         i :integer;
     begin
         write('Masukkan nomor yang ingin dilepas: ');readln(nomor);
-        if(nomor>jmlPokebon)then
+        if(nomor>jmlInv-1)then
         begin
             writeln('Tidak ada pokebon pada nomor inventori: ',nomor);
         end else
