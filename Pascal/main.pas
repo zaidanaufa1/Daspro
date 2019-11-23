@@ -123,13 +123,14 @@ begin
         writeln('1. Pokebon Database (pokedex)');
         writeln('2. Mengecek Inventori (inventori)');
         writeln('3. Lepaskan Pokebon (lepas)');
-        writeln('4. Menangkap Pokebon (tangkap)');
-        writeln('5. Bertarung (tarung)');
-        writeln('6.Lihat stats (statistik)');
-        writeln('7.Lihat chart evolusi (lihatEvolusi)');
-        writeln('8.Evolusi Pokebon (evolusi)');
-        writeln('9.Tidur (tidur)');
-        writeln('10.Save File (save)');
+        writeln('4. Melihat kemungkinan bertemu Pokebon (pokebonChance)');
+        writeln('5. Menangkap Pokebon (tangkap)');
+        writeln('6. Bertarung (tarung)');
+        writeln('7.Lihat stats (statistik)');
+        writeln('8.Lihat chart evolusi (lihatEvolusi)');
+        writeln('9.Evolusi Pokebon (evolusi)');
+        writeln('10.Tidur (tidur)');
+        writeln('11.Save File (save)');
         writeln('0.Exit (exit)');
         write('Masukkan hal yang ingin dilakukan: ');readln(str_choice);
         if (str_choice = 'pokedex') then
@@ -146,6 +147,10 @@ begin
             pelepasan();
             stats();
             cariUnik();
+        end else if(str_choice='pokebonChance')then
+        begin
+            batas();
+            PrintEncounterChance();
         end else if(str_choice='tangkap')then
         begin
             batas();
