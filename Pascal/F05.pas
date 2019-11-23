@@ -51,8 +51,11 @@ implementation
         writeln ('Kemungkinan menemukan setiap pokebon:');
         for i := 1 to jmlEvo-1 do
                 begin
-                persen := ((((defaultPoke-j) * 100)/Tencounter.Neff));
-                writeln(TEvo[i].Alur_Evolusi[j],' = ',persen:0:2, '%');
+                for j := 1 to last_Ev[i] do
+                    begin
+                        persen := ((((defaultPoke-j) * 100)/Tencounter.Neff));
+                        writeln(TEvo[i].Alur_Evolusi[j],' = ',persen:0:2, '%');
+                    end;
                 end;
         end;
 
