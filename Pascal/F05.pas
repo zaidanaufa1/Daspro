@@ -19,10 +19,10 @@ jadi rank X pokemon memiliki petak array defaultPoke - x  }
 implementation
 
     function EncounterChance(T: EncounterChance ;Neff : integer):string;
-    
+        
         begin
-        {Randomize;}
-        EncounterChance := T.ArrNamaPokebon[(Random(Neff))];
+        Randomize;
+        EncounterChance := T.ArrNamaPokebon[Random(Neff)];
         end;
 
     procedure InputArrEncounter(NamaPokebon: string; IPos , jumlah : integer);
