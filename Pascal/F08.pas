@@ -37,7 +37,7 @@ implementation
                 TStats[jmlStats-1].Nama_Pokebon := TInv[i].Nama_Pokebon;
                 TStats[jmlStats-1].Max_Level := TInv[i].Level;
             end;
-
+            
         end;
     end;
 

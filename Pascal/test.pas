@@ -1,16 +1,22 @@
 uses 
-    PokebonCSV,F05;
+    PokebonCSV,F09,F10,F15;
 var
     i:integer;
 
 begin
-    StatsCSVtoArray('stats.csv');
+    PokebonCSVtoArray('pokemon.csv');
     EvolutionCSVtoArray('Alur_Evolusi.csv');
-    makeArrEncounterChance();
-    {for i:=1 to Tencounter.Neff do
-    begin
-        writeln(i,' ',Tencounter.ArrNamaPokebon[i]);
-    end;}
-    writeln(EncounterChance(Tencounter,Tencounter.Neff));
+    for i:=1 to jmlPokebon-1 do
+            begin
+                //writeln(Tpok[i].nama);
+                if(TPok[i].Evolusi_Selanjutnya='-')then
+                begin
+                    AddEvolution(TPok[i].Nama,'','test');
+                end else
+                begin
+                    AddEvolution(TPok[i].Nama,TPok[i].Evolusi_Selanjutnya,'test');
+                end; 
+            end;
+    saveevolusi('Alur_Evolusi.csv');
 
 end.
