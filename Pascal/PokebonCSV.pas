@@ -32,6 +32,10 @@ interface
         Nama_Pokebon : string;
         Max_Level : string;
     end;
+    type EncounterChance=record
+        ArrNamaPokebon : array [1..1000] of string;
+        Neff : integer;
+    end;
 
     const
         mark  =',';
@@ -61,6 +65,8 @@ interface
         stats : status;
         TStats : array [0..1000] of status;
         jmlStats : integer;
+
+        Tencounter : EncounterChance;
 
     procedure PokebonCSVtoArray(CSV : string);
     procedure InvenCSVtoArray(CSV : string);
