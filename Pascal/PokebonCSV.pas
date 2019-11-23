@@ -33,12 +33,6 @@ interface
         Max_Level : string;
     end;
 
-    type
-    EncounterChance = record
-                      ArrNamaPokebon : array [1..1000] of string;
-                      Neff : integer;
-                      end;
-
     const
         mark  =',';
     var
@@ -68,7 +62,6 @@ interface
         TStats : array [0..1000] of status;
         jmlStats : integer;
 
-        Tencounter : EncounterChance;
     procedure PokebonCSVtoArray(CSV : string);
     procedure InvenCSVtoArray(CSV : string);
     procedure EvolutionCSVtoArray(CSV : string);
@@ -125,7 +118,10 @@ implementation
                             TPok[baris].Evolusi_Selanjutnya := tempText;
                         end;
                         tempText := '';
-                        kolom := kolom+1;  
+                        kolom := kolom+1;
+                    end else if (CC[i]=' ') then
+                    begin
+                        
                     end else
                     begin
                         tempText := tempText + CC[i];
@@ -190,6 +186,9 @@ implementation
                         end;
                         kolom := kolom+1;
                         tempText := '';
+                    end else if (CC[i]=' ') then
+                    begin
+
                     end else
                     begin
                         tempText := tempText + CC[i];
@@ -239,13 +238,16 @@ implementation
                         if(kolom=0)then
                         begin
                             TEvo[baris].ID_Evolusi := tempText;
-                        end else 
+                        end else
                         begin
                             TEvo[baris].Alur_Evolusi[kolom]:=tempText;
                         end;
                         tempText:='';
                         kolom:=kolom+1;
-                    end else 
+                    end else if (CC[i]=' ') then
+                    begin
+
+                    end else
                     begin
                         tempText := tempText+CC[i];
                     end;
@@ -310,7 +312,10 @@ procedure TrainerCSVtoArray(CSV : string);
                         end;
                         kolom := kolom+1;
                         tempText := ''; 
-                    end else 
+                    end else if (CC[i]=' ') then
+                    begin
+
+                    end else
                     begin
                         tempText := tempText + CC[i];
                     end;                       
@@ -328,7 +333,7 @@ procedure TrainerCSVtoArray(CSV : string);
 		end;
         close(File_Trainer);
 	end;
-    
+
     procedure StatsCSVtoArray(CSV : string);
 	var 
 		baris : integer;
@@ -368,7 +373,10 @@ procedure TrainerCSVtoArray(CSV : string);
                         end;
                         kolom := kolom+1;
                         tempText := '';
-                    end else 
+                    end else if (CC[i]=' ') then
+                    begin
+                                           
+                    end else
                     begin
                         tempText := tempText + CC[i];
                     end;                       
