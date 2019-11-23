@@ -21,16 +21,21 @@ implementation
     function EncounterChance(T: EncounterChance ;Neff : integer):string;
     
         begin
-        Randomize;
-        EncounterChance := T.ArrNamaPokebon[(Random(Neff))]
+        {Randomize;}
+        EncounterChance := T.ArrNamaPokebon[(Random(Neff))];
         end;
 
     procedure InputArrEncounter(NamaPokebon: string; IPos , jumlah : integer);
+        var
+        count : integer;
+
         begin
-        while Ipos <= jumlah do
-            begin
-            Tencounter.ArrNamaPokebon[Ipos] := NamaPokebon;
-            end;
+        count := 1;
+        repeat
+        Tencounter.ArrNamaPokebon[Ipos] := NamaPokebon;
+            ipos := ipos +1;
+            count := count +1;            
+        until count > jumlah; 
         end;
 
     procedure PrintEncounterChance();
@@ -45,11 +50,10 @@ implementation
         begin   
         writeln ('Kemungkinan menemukan setiap pokebon:');
         for i := 1 to jmlEvo-1 do
-            begin
-            for j := 1 to last_Ev[i] do
-            persen := (((defaultPoke * 100)/Tencounter.Neff));
-            writeln(TEvo[i].Alur_Evolusi[j],' = ',persen:0:2, '%');
-            end;
+                begin
+                persen := ((((defaultPoke-j) * 100)/Tencounter.Neff));
+                writeln(TEvo[i].Alur_Evolusi[j],' = ',persen:0:2, '%');
+                end;
         end;
 
     procedure makeArrEncounterChance();
@@ -70,6 +74,7 @@ implementation
                 Tencounter.Neff := Tencounter.Neff + (defaultPoke-j);
                 end;
             end;
+        Tencounter.Neff := Tencounter.Neff-1;    
         end;
 end.
 

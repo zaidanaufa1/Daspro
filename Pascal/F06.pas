@@ -9,8 +9,10 @@ implementation
     procedure tangkap();
     var
         i : integer;
+        enemy : string;
     begin
         //writeln('sebelum',jmlInv);
+        enemy := EncounterChance(Tencounter, Tencounter.Neff);
         writeln('Kamu mendapatkan: pikaboo');
         writeln('Isi inventori saat ini:');
         jmlInv := jmlInv+1;
