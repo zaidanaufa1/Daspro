@@ -12,7 +12,7 @@ implementation
         enemy : string;
     begin
         //writeln('sebelum',jmlInv);
-        enemy := EncounterChance(Tencounter, Tencounter.Neff);
+        //enemy := EncounterChance(Tencounter, Tencounter.Neff);
         writeln('Kamu mendapatkan: pikaboo');
         writeln('Isi inventori saat ini:');
         jmlInv := jmlInv+1;

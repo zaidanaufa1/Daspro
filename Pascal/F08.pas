@@ -7,7 +7,6 @@ interface
     var
         unik :integer;
     procedure stats();
-    //procedure cariUnik();
     procedure printStats();
 implementation
     procedure stats();
@@ -42,33 +41,7 @@ implementation
         end;
     end;
 
-    {procedure cariUnik();
-    var
-        i,j:integer;
-        cari:boolean;
-    begin
-        unik:=0;
-        for i:=1 to jmlInv-1 do
-        begin
-            j:=1;
-            cari := false;
-            while ((not cari) and (j<=jmlInv-1))do
-            begin
-                if(TInv[i].Nama_Pokebon <> TInv[j].Nama_Pokebon)then
-                begin                   
-                    cari := True;
-                end; 
-                j := j+1;
-            end;
-            if(not cari)then
-            begin
-                unik:=unik+1;
-            end;
-
-        end;    
-    end;}
-
-
+    
     procedure printStats();
     var
         i:integer;

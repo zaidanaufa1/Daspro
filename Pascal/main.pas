@@ -11,7 +11,7 @@ begin
     PokebonCSVtoArray('pokemon.csv');
     EvolutionCSVtoArray('Alur_Evolusi.csv');
     TrainerCSVtoArray('trainer.csv');
-    makeArrEncounterChance()
+    makeArrEncounterChance();
     login();
     if (roleAdmin)then//kalo admin bisa ngubah file pokebon,alur evolusi yang sudah ada
     begin
@@ -163,14 +163,14 @@ begin
         begin
             batas();
             bertarung();
-            stats();
+            //stats();
             //cariUnik();
         end else if(str_choice='statistik')then
         begin
             stats();
             //cariUnik();
             printStats();  
-            saveStats(TTrain[user].File_Stats);      
+            //saveStats(TTrain[user].File_Stats);      
         end else if(str_choice='lihatEvolusi')then
         begin
             batas();
