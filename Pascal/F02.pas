@@ -2,7 +2,8 @@ unit F02;
 
 interface
     uses 
-        PokebonCSV;
+        PokebonCSV,F01;
+
     procedure printPokeDex();
     
 implementation

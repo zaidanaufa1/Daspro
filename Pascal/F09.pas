@@ -2,7 +2,7 @@ unit F09;
 
 interface
     uses
-        PokebonCSV,sysutils;
+        PokebonCSV,sysutils,F10;
     procedure tambahPokebon();
 
 implementation
@@ -11,7 +11,7 @@ implementation
         inp_nama : string;
         inp_jenis : string;
         ketemu : boolean;
-        indeks : integer;
+        indeks,i : integer;
     begin
         write('Nama pokebon  yang ingin dibuat: ');readln(inp_nama);
         write('Tipe pokebon  yang ingin dibuat: ');readln(inp_jenis);
@@ -38,6 +38,7 @@ implementation
             TPok[jmlPokebon-1].Tipe := inp_jenis;
             TPok[jmlPokebon-1].Evolusi_Selanjutnya:='-';
             writeln('Pokebon baru berhasil dibuat');
+            AddEvolution(inp_nama,'','test');
         end;
     end;
 end.

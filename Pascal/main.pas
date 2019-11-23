@@ -13,6 +13,7 @@ begin
     TrainerCSVtoArray('trainer.csv');
     makeArrEncounterChance();
     login();
+    stats();
     if (roleAdmin)then//kalo admin bisa ngubah file pokebon,alur evolusi yang sudah ada
     begin
         writeln('User telah login sebagai admin');
@@ -84,7 +85,7 @@ begin
         end else if(str_choice='buatEvolusi')then
         begin
             batas();
-            AddEvolution();
+            inputEvo();
             printEvo();   
         end else if(str_choice='lihatEvolusi')then
         begin
