@@ -1,4 +1,6 @@
 Nama,Day_Passed,File_Inventori,File_Stats
 laus,1,Inventori.csv,stats.csv
 udin,2,Inventori2.csv,stats2.csv
-danen,Inventori.csv,stats.csv
+danen,1,Inventori.csv,stats.csv
+admin,1,Inventori.csv,stats.csv
+Admin,1,Inventori.csv,stats.csv

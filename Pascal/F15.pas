@@ -115,7 +115,7 @@ implementation
             writeln(CSV,'');
         end else
         begin
-        while i <= jmlPokebon-1 do 
+        while i <= jmlStats-1 do 
             begin
             isi := '';
             isi := isi + ((TStats[i].Nama_Pokebon)+','+(TStats[i].Max_Level));

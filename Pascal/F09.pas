@@ -26,17 +26,17 @@ implementation
             begin
                 indeks:=indeks+1;
             end;
-        until ( (ketemu) or (indeks>jmlPokebon) );
+        until ( (ketemu) or (indeks>jmlPokebon-1) );
         if(ketemu)then
         begin
             writeln('Terdapat kesalahan pada pembuatan pokebon');
         end else
         begin
             jmlPokebon := jmlPokebon +1;
-            TPok[jmlPokebon].ID_Pokebon := IntToStr(jmlPokebon);
-            TPok[jmlPokebon].Nama := inp_nama;
-            TPok[jmlPokebon].Tipe := inp_jenis;
-            TPok[jmlPokebon].Evolusi_Selanjutnya:='-';
+            TPok[jmlPokebon-1].ID_Pokebon := IntToStr(jmlPokebon-1);
+            TPok[jmlPokebon-1].Nama := inp_nama;
+            TPok[jmlPokebon-1].Tipe := inp_jenis;
+            TPok[jmlPokebon-1].Evolusi_Selanjutnya:='-';
             writeln('Pokebon baru berhasil dibuat');
         end;
     end;

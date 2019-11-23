@@ -14,7 +14,7 @@ implementation
         cari1 : boolean;baris1:integer;kolom1:integer;
         cari2 : boolean;baris2:integer;kolom2:integer;
     begin
-        j := 1;//kolom dari 1 karena yang 0 itu id
+        
         i := 1;//baris dari 1 karena yang 0 itu header
         cari1 := False;
         cari2 :=False;
@@ -22,8 +22,10 @@ implementation
         write('Masukkan nama pokebon sesudah evolusi: ');readln(aftr);
         while (i<=jmlEvo-1) do
         begin
+            j:=1;
             while (j<=last_Ev[i] )do
             begin
+                writeln(TEvo[i].Alur_Evolusi[j] ,' ', bfr);
                 if(TEvo[i].Alur_Evolusi[j] = bfr)then
                 begin
                     cari1 := True;
@@ -39,13 +41,16 @@ implementation
             end;
             i := i+1;
         end;
-
+        writeln(baris1,'|',kolom1);
+        writeln(baris2,'|',kolom2);
+        writeln(cari1);
+        writeln(cari2);
         if(not cari1 and not cari2)then
         begin
-            TEvo[jmlEvo+1].Alur_Evolusi[1] := bfr;
-            TEvo[jmlEvo+1].Alur_Evolusi[2] := aftr;
-            last_Ev[jmlEvo+1] := 2;
-            TEvo[jmlEvo+1].ID_Evolusi := IntToStr(jmlEvo+1);
+            TEvo[jmlEvo].Alur_Evolusi[1] := bfr;
+            TEvo[jmlEvo].Alur_Evolusi[2] := aftr;
+            last_Ev[jmlEvo] := 2;
+            TEvo[jmlEvo].ID_Evolusi := IntToStr(jmlEvo);
             jmlEvo:=jmlEvo+1;
         end else
         begin

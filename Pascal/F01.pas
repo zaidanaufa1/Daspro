@@ -41,14 +41,7 @@ implementation
                 writeln('Tidak ada username ',nama,' pada database. Sistem akan memulai permainan baru. ');
                 jmlTrain := jmlTrain +1;
                 user := jmlTrain-1;
-                {writeln(jmlTrain);
-                writeln(user);
-                for i := 1 to user do
-                begin
-                    writeln(TTrain[i].Nama);   
-                end;}
-                    
-                    
+                                        
                 TTrain[user].Nama := nama;
                 TTrain[user].Day_Passed := '0';
                 TTrain[user].File_Inventori := 'Inventori_'+nama+'.csv';

@@ -1,9 +1,16 @@
 uses 
-    PokebonCSV;
+    PokebonCSV,F05;
 var
-    nama:string;
+    i:integer;
 
 begin
-    TrainerCSVtoArray('trainer.csv');
-    writeln(jmlTrain);
+    StatsCSVtoArray('stats.csv');
+    EvolutionCSVtoArray('Alur_Evolusi.csv');
+    makeArrEncounterChance();
+    {for i:=1 to Tencounter.Neff do
+    begin
+        writeln(i,' ',Tencounter.ArrNamaPokebon[i]);
+    end;}
+    writeln(EncounterChance(Tencounter,Tencounter.Neff));
+
 end.

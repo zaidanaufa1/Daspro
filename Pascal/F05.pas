@@ -22,7 +22,7 @@ implementation
         
         begin
         Randomize;
-        EncounterChance := T.ArrNamaPokebon[Random(Neff)];
+        EncounterChance := T.ArrNamaPokebon[Random(Neff-1)+1];
         end;
 
     procedure InputArrEncounter(NamaPokebon: string; IPos , jumlah : integer);

@@ -14,7 +14,7 @@ implementation
         i,j:integer;
         cari:boolean;
     begin
-        for i:=1 to jmlInv do
+        for i:=1 to jmlInv-1 do
         begin
             j:=1;
             cari := false;
