@@ -26,11 +26,15 @@ implementation
         end;
 
     procedure InputArrEncounter(NamaPokebon: string; IPos , jumlah : integer);
+        var
+        count : integer;
         begin
-        while Ipos <= jumlah do
-            begin
+        count := 1;
+        repeat
             Tencounter.ArrNamaPokebon[Ipos] := NamaPokebon;
-            end;
+            ipos := ipos +1;
+            count := count +1;            
+        until count > jumlah; 
         end;
 
     procedure PrintEncounterChance();
@@ -47,8 +51,10 @@ implementation
         for i := 1 to jmlEvo-1 do
             begin
             for j := 1 to last_Ev[i] do
-            persen := (((defaultPoke * 100)/Tencounter.Neff));
-            writeln(TEvo[i].Alur_Evolusi[j],' = ',persen:0:2, '%');
+                begin
+                persen := ((((defaultPoke-j) * 100)/Tencounter.Neff));
+                writeln(TEvo[i].Alur_Evolusi[j],' = ',persen:0:2, '%');
+                end;
             end;
         end;
 
@@ -70,6 +76,7 @@ implementation
                 Tencounter.Neff := Tencounter.Neff + (defaultPoke-j);
                 end;
             end;
+        Tencounter.Neff := Tencounter.Neff-1;
         end;
 end.
 
