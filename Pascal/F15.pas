@@ -1,7 +1,7 @@
 unit F15;
 interface
 uses
-PokebonCSV;
+PokebonCSV,F01;
 procedure save;
 procedure saveStats(NamaFile : string);
 procedure savepokebon(NamaFile : string);
@@ -150,18 +150,26 @@ implementation
         close(CSV)
         end;
     end;
-      {  CSV : Text ;
-        i : integer;
-        isi : string;
-}
-    {procedure saveevolusi(NamaFile: string);}
+      
         
     procedure save();
         var
-        NamaFilePok : string;
+        NamaFilePok,NamaFileEvo, NamaFileInv, NamaFileStat : string;
+        
         begin
-        write('Tulis nama File save untuk pokebon: ');
-        readln(NamaFilePok);
-        savepokebon(NamaFilePok);
+            if roleAdmin then 
+            begin
+                write('Tulis nama File save untuk pokebon: ');
+                readln(NamaFilePok);
+                savepokebon(NamaFilePok);
+                write('Tulis nama File save untuk Evolusi');
+                readln(NamaFileEvo);
+                saveevolusi(NamaFileEvo);
+                write('Tulis nama File save untuk Inventori');
+                readln(NamaFileInv);
+                saveinventori(NamaFileInv);
+                write('Tulis nama File save untuk Stats');
+                readln(NamaFileStat);
+                saveStats(NamaFileStat);
         end;
 end.
