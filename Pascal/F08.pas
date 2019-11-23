@@ -35,8 +35,8 @@ implementation
             if(not cari)then
             begin
                 jmlStats := jmlStats +1;
-                TStats[jmlStats].Nama_Pokebon := TInv[i].Nama_Pokebon;
-                TStats[jmlStats].Max_Level := TInv[i].Level;
+                TStats[jmlStats-1].Nama_Pokebon := TInv[i].Nama_Pokebon;
+                TStats[jmlStats-1].Max_Level := TInv[i].Level;
             end;
 
         end;
@@ -76,9 +76,11 @@ implementation
         writeln('Sekarang adalah hari ke-',TTrain[user].Day_Passed);
         writeln('Pokebon unik yang dimiliki:',jmlStats-1,'/',jmlInv-1);
         writeln('Maksimum level dari setiap pokebon:');
-        for i:=1 to jmlStats-1 do
+        i:=1;
+        while i <= jmlStats-1 do
         begin
             writeln(TStats[i].Nama_Pokebon,'|',TStats[i].Max_Level);
+            i :=i+1;
         end;
     end;
 end.

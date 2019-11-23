@@ -2,7 +2,7 @@ unit F01;
 
 interface
     uses
-        PokebonCSV;
+        PokebonCSV,F15;
     var
         user:integer;//buat cari username di array train
         roleAdmin:boolean;
@@ -27,8 +27,8 @@ implementation
         if ( isAdmin(nama) ) then
         begin
            writeln('User admin telah login'); 
-        end else
-        begin
+        end ;
+
             while( (i<=jmlTrain-1) and (not cari) )do//search user di indeks berapa
             begin
                 if(TTrain[i].Nama = nama)then
@@ -43,18 +43,32 @@ implementation
             begin
                 writeln('Tidak ada username ',nama,' pada database. Sistem akan memulai permainan baru. ');
                 jmlTrain := jmlTrain +1;
-                TTrain[jmlTrain].Nama := nama;
-                TTrain[jmlTrain].File_Inventori := 'Inventori.csv';
-                TTrain[jmlTrain].File_Stats := 'stats.csv';
+                user := jmlTrain-1;
+                {writeln(jmlTrain);
+                writeln(user);
+                for i := 1 to user do
+                begin
+                    writeln(TTrain[i].Nama);   
+                end;}
+                    
+                    
+                TTrain[user].Nama := nama;
+                TTrain[user].Day_Passed := '0';
+                TTrain[user].File_Inventori := 'Inventori_'+nama+'.csv';
+                TTrain[user].File_Stats := 'stats_'+nama+'.csv';
+                jmlInv := 0;
+                jmlStats:=0;
+                //savetrainer('trainer.csv');
+                saveStats('Inventori_'+nama+'.csv');
+                saveinventori('stats_'+nama+'.csv');
+                
+                
+            end ;
+            
                 InvenCSVtoArray(TTrain[user].File_Inventori);
                 StatsCSVtoArray(TTrain[user].File_Stats);
-                user := jmlTrain;
-            end else
-            begin
-                InvenCSVtoArray(TTrain[user].File_Inventori);
-                StatsCSVtoArray(TTrain[user].File_Stats);
-            end;   
-        end;
+
+        
         
     end;
 end.
