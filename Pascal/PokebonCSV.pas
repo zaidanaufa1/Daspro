@@ -67,6 +67,7 @@ interface
         jmlStats : integer;
 
         Tencounter : EncounterChance;
+        nama : string;
 
     procedure PokebonCSVtoArray(CSV : string);
     procedure InvenCSVtoArray(CSV : string);

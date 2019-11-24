@@ -12,7 +12,9 @@ begin
     EvolutionCSVtoArray('Alur_Evolusi.csv');
     TrainerCSVtoArray('trainer.csv');
     makeArrEncounterChance();
-    login();
+    write('Masukkan username: ');
+    readln(nama);
+    login(nama);
     stats();
     if (roleAdmin)then//kalo admin bisa ngubah file pokebon,alur evolusi yang sudah ada
     begin

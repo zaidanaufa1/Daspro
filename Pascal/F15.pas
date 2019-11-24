@@ -1,7 +1,7 @@
 unit F15;
 interface
 uses
-    PokebonCSV;
+PokebonCSV;
 procedure save;
 procedure saveStats(NamaFile : string);
 procedure savepokebon(NamaFile : string);
@@ -156,21 +156,41 @@ implementation
     procedure save();
         var
         NamaFilePok,NamaFileEvo, NamaFileInv, NamaFileStat : string;
-        
+        i,user : integer;
+        cari :boolean;
         begin
-            
+            if (nama = 'admin') or (nama = 'Admin') then
+                begin
                 write('Tulis nama File save untuk pokebon: ');
                 readln(NamaFilePok);
                 savepokebon(NamaFilePok);
-                write('Tulis nama File save untuk Evolusi');
+                write('Tulis nama File save untuk Evolusi: ');
                 readln(NamaFileEvo);
                 saveevolusi(NamaFileEvo);
-        
-                write('Tulis nama File save untuk Inventori');
-                readln(NamaFileInv);
-                saveinventori(NamaFileInv);
-                write('Tulis nama File save untuk Stats');
-                readln(NamaFileStat);
-                saveStats(NamaFileStat);
+                end;
+            
+            write('Tulis nama File save untuk Inventori: ');
+            readln(NamaFileInv);
+            saveinventori(NamaFileInv);
+            write('Tulis nama File save untuk Stats: ');
+            readln(NamaFileStat);
+            saveStats(NamaFileStat);
+            
+            i := 1;
+            cari :=false;
+            while( (i<=jmlTrain-1) and (not cari) )do//search user di indeks berapa
+            begin
+                if(TTrain[i].Nama = nama)then
+                begin
+                    cari:=true;
+                    user :=i;
+                end else
+                begin   
+                i := i+1;
+                end;
+            end;
+            TTrain[user].File_Inventori := NamaFileinv;
+            TTrain[user].File_Stats := NamaFileStat;
+            savetrainer('trainer.csv');
        end; 
 end.
