@@ -23,6 +23,7 @@ implementation
         j : integer;
         cari1 : boolean;baris1:integer;kolom1:integer;
         cari2 : boolean;baris2:integer;kolom2:integer;
+        success:boolean;
     begin
         
         i := 1;//baris dari 1 karena yang 0 itu header
@@ -74,17 +75,29 @@ implementation
                 jmlEvo:=jmlEvo-1;  
 
             end;
-            writeln('Alur evolusi berhasil disambungkan') ;
-        end;
+            if (state='update') then
+            begin
+                    writeln('Alur evolusi berhasil disambungkan');     
+            end ;
+        end else
         
         if(not cari1 and not cari2)then
         begin
             TEvo[jmlEvo].Alur_Evolusi[1] := curr;
-            TEvo[jmlEvo].Alur_Evolusi[2] := next;
-            last_Ev[jmlEvo] := 2;
+            if(next='')then
+            begin
+                last_Ev[jmlEvo] := 1;               
+            end else
+            begin
+                TEvo[jmlEvo].Alur_Evolusi[2] := next;  
+                last_Ev[jmlEvo] := 2;   
+            end;          
             TEvo[jmlEvo].ID_Evolusi := IntToStr(jmlEvo);
             jmlEvo:=jmlEvo+1;
-            writeln('Alur evolusi berhasil disambungkan') ;
+            if (state='update') then
+            begin
+                    writeln('Alur evolusi berhasil disambungkan');     
+            end ;      
         end else
         begin
             if( not cari2 ) then
@@ -93,37 +106,26 @@ implementation
                 begin
                     TEvo[baris1].Alur_Evolusi[kolom1+1]:=next;
                     last_Ev[baris1]:=last_Ev[baris1]+1;
-                    writeln('Alur evolusi berhasil disambungkan') ; 
+                    if (state='update') then
+            begin
+                    writeln('Alur evolusi salah');     
+            end ;
                 end else
                 begin
-                    if(state='update')then
-                    begin
-                        writeln('Alur evolusi tidak memenuhi syarat');   
-                    end;
-                    
-                end;
-                
+                    if (state='update') then
+            begin
+                    writeln('Alur evolusi salah');     
+            end ;
+                end;  
             end else
             begin
                 if (state='update') then
-                begin
-                  writeln('Alur evolusi tidak memenuhi syarat');  
-                end else
-                begin
-                    if(next='')then
-                    begin
-                         if ( not cari1 ) then
-                         begin
-                            TEvo[jmlEvo].Alur_Evolusi[1] := curr;
-                            //TEvo[jmlEvo].Alur_Evolusi[2] := next;
-                            last_Ev[jmlEvo] := 1;
-                            TEvo[jmlEvo].ID_Evolusi := IntToStr(jmlEvo);
-                            jmlEvo:=jmlEvo+1;    
-                        end;
-                    end;
-                end;
-                
+            begin
+                    writeln('Alur evolusi  salah');     
+            end ;  
             end;
+
+            
         end;
     end;
         

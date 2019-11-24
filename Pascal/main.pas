@@ -182,6 +182,11 @@ begin
         end else  if(str_choice='exit')then
         begin
             batas();
+            saveStats(TTrain[user].File_Stats);
+            saveinventori(TTrain[user].File_Inventori);
+            savepokebon('pokemon.csv');
+            saveevolusi('Alur_Evolusi.csv');
+            savetrainer('trainer.csv');
             writeln('See you next time!');
         end else
         begin
