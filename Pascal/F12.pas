@@ -96,11 +96,9 @@ implementation
                     end else
                     begin
                         kolom := kolom+1;
-                        writeln('kolom ',kolom);
                     end;
                 end;
                 baris := baris+1;
-                writeln('baris ',baris);
             end;
         end;
     end;
