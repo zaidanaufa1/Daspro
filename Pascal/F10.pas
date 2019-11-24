@@ -49,6 +49,34 @@ implementation
             end;
             i := i+1;
         end;
+        if( (kolom2=1) and (kolom1=last_Ev[baris1]))then
+        begin
+            i:=last_Ev[baris1]+1;
+            j:=1;
+            last_Ev[baris1]:=last_Ev[baris1]+last_Ev[baris2];
+            while(i<=last_Ev[baris1]+1)do
+            begin
+                TEvo[baris1].Alur_Evolusi[i] := TEvo[baris2].Alur_Evolusi[j];
+                j:=j+1;
+                i:=i+1;  
+            end;
+            if(baris2=jmlEvo-1)then
+            begin
+                jmlEvo:=jmlEvo-1;    
+            end else
+            begin
+                for i:=baris2+1 to jmlEvo-1 do
+                begin
+                    TEvo[i].ID_Evolusi := IntToStr(StrToInt(TEvo[i].ID_Evolusi)-1);
+                    TEvo[i-1]:=TEvo[i];
+                    last_Ev[i-1]:=last_Ev[i];
+                end;  
+                jmlEvo:=jmlEvo-1;  
+
+            end;
+            writeln('Alur evolusi berhasil disambungkan') ;
+        end;
+        
         if(not cari1 and not cari2)then
         begin
             TEvo[jmlEvo].Alur_Evolusi[1] := curr;
@@ -56,6 +84,7 @@ implementation
             last_Ev[jmlEvo] := 2;
             TEvo[jmlEvo].ID_Evolusi := IntToStr(jmlEvo);
             jmlEvo:=jmlEvo+1;
+            writeln('Alur evolusi berhasil disambungkan') ;
         end else
         begin
             if( not cari2 ) then
@@ -63,7 +92,8 @@ implementation
                 if ( (kolom1=1) or (kolom1=last_Ev[baris1]) ) then
                 begin
                     TEvo[baris1].Alur_Evolusi[kolom1+1]:=next;
-                    last_Ev[baris1]:=last_Ev[baris1]+1;    
+                    last_Ev[baris1]:=last_Ev[baris1]+1;
+                    writeln('Alur evolusi berhasil disambungkan') ; 
                 end else
                 begin
                     if(state='update')then
@@ -85,8 +115,8 @@ implementation
                          if ( not cari1 ) then
                          begin
                             TEvo[jmlEvo].Alur_Evolusi[1] := curr;
-                            TEvo[jmlEvo].Alur_Evolusi[2] := next;
-                            last_Ev[jmlEvo] := 2;
+                            //TEvo[jmlEvo].Alur_Evolusi[2] := next;
+                            last_Ev[jmlEvo] := 1;
                             TEvo[jmlEvo].ID_Evolusi := IntToStr(jmlEvo);
                             jmlEvo:=jmlEvo+1;    
                         end;

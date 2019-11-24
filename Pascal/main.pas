@@ -65,28 +65,25 @@ begin
             batas();
             tangkap();
             stats();
-            //cariUnik();
         end else if(str_choice='tarung')then
         begin
             batas();
             bertarung();
             stats();
-            //cariUnik();
         end else if(str_choice='statistik')then
         begin
             stats();
-            //cariUnik();
             printStats();  
         end else if(str_choice='buatPokebon')then
         begin
             batas();
             tambahPokebon(); 
-            printPokeDex(); 
+            //printPokeDex(); 
         end else if(str_choice='buatEvolusi')then
         begin
             batas();
             inputEvo();
-            printEvo();   
+            //printEvo();   
         end else if(str_choice='lihatEvolusi')then
         begin
             batas();
@@ -95,7 +92,7 @@ begin
         begin
             batas();
             hapusEvo();
-            printEvo(); 
+            //printEvo(); 
         end else if(str_choice='evolusi')then
         begin
             batas();
@@ -149,7 +146,6 @@ begin
             batas();
             pelepasan();
             stats();
-            //cariUnik();
         end else if(str_choice='pokebonChance')then
         begin
             batas();
@@ -159,19 +155,15 @@ begin
             batas();
             tangkap();
             stats();
-            //cariUnik();
         end else if(str_choice='tarung')then
         begin
             batas();
             bertarung();
-            //stats();
-            //cariUnik();
+            stats();
         end else if(str_choice='statistik')then
         begin
             stats();
-            //cariUnik();
-            printStats();  
-            //saveStats(TTrain[user].File_Stats);      
+            printStats();      
         end else if(str_choice='lihatEvolusi')then
         begin
             batas();
