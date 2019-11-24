@@ -2,7 +2,7 @@ unit F07;
 
 interface
     uses 
-        PokebonCSV,sysutils,F05;
+        PokebonCSV,sysutils,F05,F03;
     procedure bertarung ();
 
 implementation
@@ -17,7 +17,9 @@ implementation
         Randomize;
         ketemu := EncounterChance(Tencounter,Tencounter.Neff);
         writeln('Kamu menemukan: ', ketemu);
-        write('Pilih pokebon!');
+        writeln('Pilih pokebon untuk bertarung : ');
+        listInven();
+        write('Masukan angka pokebon yang akan bertarung : ');
         readln(inp);
         //cari pokebon
         //indeks := 1;
@@ -37,7 +39,7 @@ implementation
                 writeln('Level dari ',TInv[inp].Nama_Pokebon,' sekarang adalah level ',TInv[inp].Level);
                 if(Random(2)=1)then
                 begin
-                    writeln('Karena pertarungan yang sengit ini,',TInv[inp].Nama_Pokebon,  'menjadi lelah. Ia ingin segera kembali ke rumah.');
+                    writeln('Karena pertarungan yang sengit ini ,',TInv[inp].Nama_Pokebon,  ' menjadi lelah. Ia ingin segera kembali ke rumah.');
                     TInv[inp].Kondisi := 'lelah';
                 end;  
             end else

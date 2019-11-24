@@ -26,21 +26,21 @@ begin
         repeat
         writeln('');
         writeln('--------------------Menu--------------------');
-        writeln('1. Pokebon Database (pokedex)');
-        writeln('2. Mengecek Inventori (inventori)');
-        writeln('3. Lepaskan Pokebon (lepas)');
-        writeln('4. Melihat kemungkinan bertemu Pokebon (pokebonChance)');
-        writeln('5. Menangkap Pokebon (tangkap)');
-        writeln('6. Bertarung (tarung)');
-        writeln('7. Lihat stats (statistik)');
-        writeln('8. Membuat Pokebon (buatPokebon)');
-        writeln('9. Membuat Evolusi Pokebon baru (buatEvolusi)');
+        writeln('1.  Pokebon Database (pokedex)');
+        writeln('2.  Mengecek Inventori (inventori)');
+        writeln('3.  Lepaskan Pokebon (lepas)');
+        writeln('4.  Melihat kemungkinan bertemu Pokebon (pokebonChance)');
+        writeln('5.  Menangkap Pokebon (tangkap)');
+        writeln('6.  Bertarung (tarung)');
+        writeln('7.  Lihat stats (statistik)');
+        writeln('8.  Membuat Pokebon (buatPokebon)');
+        writeln('9.  Membuat Evolusi Pokebon baru (buatEvolusi)');
         writeln('10. Lihat chart evolusi (lihatEvolusi)');
         writeln('11. Menghapus tahapan evolusi pada Pokebon (hapusEvolusi)');
         writeln('12. Evolusi Pokebon (evolusi)');
         writeln('13. Tidur (tidur)');
         writeln('14. Save File (save)');
-        writeln('0.Exit (exit)');
+        writeln('0.  Exit (exit)');
         write('Masukkan hal yang ingin dilakukan: ');readln(str_choice);
         if (str_choice = 'pokedex') then
         begin
@@ -120,18 +120,18 @@ begin
         repeat
         writeln('');
         writeln('--------------------Menu--------------------');
-        writeln('1. Pokebon Database (pokedex)');
-        writeln('2. Mengecek Inventori (inventori)');
-        writeln('3. Lepaskan Pokebon (lepas)');
-        writeln('4. Melihat kemungkinan bertemu Pokebon (pokebonChance)');
-        writeln('5. Menangkap Pokebon (tangkap)');
-        writeln('6. Bertarung (tarung)');
-        writeln('7.Lihat stats (statistik)');
-        writeln('8.Lihat chart evolusi (lihatEvolusi)');
-        writeln('9.Evolusi Pokebon (evolusi)');
-        writeln('10.Tidur (tidur)');
-        writeln('11.Save File (save)');
-        writeln('0.Exit (exit)');
+        writeln('1.  Pokebon Database (pokedex)');
+        writeln('2.  Mengecek Inventori (inventori)');
+        writeln('3.  Lepaskan Pokebon (lepas)');
+        writeln('4.  Melihat kemungkinan bertemu Pokebon (pokebonChance)');
+        writeln('5.  Menangkap Pokebon (tangkap)');
+        writeln('6.  Bertarung (tarung)');
+        writeln('7.  Lihat stats (statistik)');
+        writeln('8.  Lihat chart evolusi (lihatEvolusi)');
+        writeln('9.  Evolusi Pokebon (evolusi)');
+        writeln('10. Tidur (tidur)');
+        writeln('11. Save File (save)');
+        writeln('0.  Exit (exit)');
         write('Masukkan hal yang ingin dilakukan: ');readln(str_choice);
         if (str_choice = 'pokedex') then
         begin
